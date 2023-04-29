@@ -19,7 +19,7 @@
         android:id="@+id/OpenAlbum"
         android:name="goldfish.bowl.androidphotos52.OpenAlbum"
         android:label="@string/open_album_label"
-        tools:layout="@layout/open_album">
+        tools:layout="@layout/open_album_view">
 
         <action
             android:id="@+id/action_OpenAlbum_to_AlbumsView"
