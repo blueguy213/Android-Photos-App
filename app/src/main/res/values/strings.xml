@@ -20,4 +20,13 @@
     <string name="imageScrollViewContentDescription">For image thumbnails</string>
     <string name="addPhotoButtonText">Add Photo</string>
     <string name="removePhotoButtonText">Remove Photo</string>
+    <string name="searchTitleText">Search Photos</string>
+    <string name="previousButtonSearchText">Previous</string>
+    <string name="searchTagTitleText">Search by Tag</string>
+    <string name="firstTagValueText">Tag Value</string>
+    <string name="secondTagValueText">Tag Value</string>
+    <string name="photoDisplayContDesc">photo display</string>
+    <string name="nextButtonSearchText">Next</string>
+    <string name="thumbnailsContDesc">For image thumbnails</string>
+    <string name="searchTagButtonText">Search</string>
 </resources>
