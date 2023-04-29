@@ -2,8 +2,6 @@ package goldfish.bowl.androidphotos52;
 
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -14,10 +12,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import goldfish.bowl.androidphotos52.databinding.ActivityMainBinding;
-
 import android.view.Menu;
 import android.view.MenuItem;
+
+import goldfish.bowl.androidphotos52.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,15 +29,18 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().setReorderingAllowed(true).replace(R.id.main_fragment_container, AlbumsView.class, null).commit();
+
         binding.searchViewFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 // TODO: Save all changes in the last fragment here
 
-                // Switch to OpenAlbum fragment here
+                // Switch to OpenAlbumView fragment here
                 FragmentManager fm = getSupportFragmentManager();
-                fm.beginTransaction().replace(R.id.nav_host_fragment_content_main, OpenAlbum.class, null).commit();
+                fm.beginTransaction().setReorderingAllowed(true).replace(R.id.main_fragment_container, SearchView.class, null).commit();
             }
         });
 
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Switch to AlbumsView fragment here
                 FragmentManager fm = getSupportFragmentManager();
-                fm.beginTransaction().replace(R.id.nav_host_fragment_content_main, AlbumsView.class, null).commit();
+                fm.beginTransaction().setReorderingAllowed(true).replace(R.id.main_fragment_container, AlbumsView.class, null).commit();
             }
         });
 
@@ -82,10 +83,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+//        return NavigationUI.navigateUp(navController, appBarConfiguration)
+//                || super.onSupportNavigateUp();
+//    }
 }
