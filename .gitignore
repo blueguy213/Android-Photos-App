@@ -19,6 +19,9 @@ dist/
 # Package files
 *.jar
 
+local.properties
+./gradle/
+
 # Maven
 target/
 dist/
@@ -47,4 +50,8 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+#Gradle binaries
+*.lock
+*.bin
 
