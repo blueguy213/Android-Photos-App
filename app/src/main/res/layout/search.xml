@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/openAlbumNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Search Photos"
+        android:textSize="18pt" />
+
+    <ImageView
+        android:id="@+id/photoDisplayImageView"
+        android:layout_width="match_parent"
+        android:layout_height="258dp"
+        android:layout_weight="1"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/prevPhotoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Previous" />
+
+        <Button
+            android:id="@+id/nextPhotoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Next"/>
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/photoThumbScrollPane"
+        android:layout_width="match_parent"
+        android:layout_height="205dp"
+        android:layout_weight="1"
+        android:contentDescription="For image thumbnails"
+        android:fillViewport="true" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/searchTagText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Search by Tag"
+        android:textSize="10pt"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/firstRadioGroup"
+            android:layout_width="197dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <AutoCompleteTextView
+            android:id="@+id/firstTagChoiceBox"
+            android:layout_width="152dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tag Value" />
+
+    </LinearLayout>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/andOrChip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/secondRadioGroup"
+            android:layout_width="197dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <AutoCompleteTextView
+            android:id="@+id/secondTagChoiceBox"
+            android:layout_width="152dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tag Value" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/searchTagButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Search" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
+</ScrollView>
