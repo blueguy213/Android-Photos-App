@@ -15,11 +15,11 @@
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/openAlbumNameText"
+        android:id="@+id/searchTitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/searchPhotosLabel"
+        android:text="@string/searchTitleText"
         android:textSize="18pt" />
 
     <ImageView
@@ -27,26 +27,29 @@
         android:layout_width="match_parent"
         android:layout_height="258dp"
         android:layout_weight="1"
+        android:contentDescription="@string/photoDisplayContDesc"
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="399dp"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/prevPhotoButton"
-            android:layout_width="wrap_content"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="219dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Previous" />
+            android:text="@string/previousButtonSearchText" />
 
         <Button
             android:id="@+id/nextPhotoButton"
-            android:layout_width="wrap_content"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="214dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Next"/>
+            android:text="@string/nextButtonSearchText" />
 
     </LinearLayout>
 
@@ -55,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="205dp"
         android:layout_weight="1"
-        android:contentDescription="For image thumbnails"
+        android:contentDescription="@string/thumbnailsContDesc"
         android:fillViewport="true" />
 
     <Space
@@ -68,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Search by Tag"
+        android:text="@string/searchTagTitleText"
         android:textSize="10pt"
         />
 
@@ -80,16 +83,16 @@
 
         <RadioGroup
             android:id="@+id/firstRadioGroup"
-            android:layout_width="197dp"
+            android:layout_width="163dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <AutoCompleteTextView
             android:id="@+id/firstTagChoiceBox"
-            android:layout_width="152dp"
+            android:layout_width="171dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tag Value" />
+            android:hint="@string/firstTagValueText" />
 
     </LinearLayout>
 
@@ -107,7 +110,7 @@
 
         <RadioGroup
             android:id="@+id/secondRadioGroup"
-            android:layout_width="197dp"
+            android:layout_width="134dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
@@ -116,7 +119,7 @@
             android:layout_width="152dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tag Value" />
+            android:hint="@string/secondTagValueText" />
 
     </LinearLayout>
 
@@ -127,10 +130,10 @@
 
     <Button
         android:id="@+id/searchTagButton"
-        android:layout_width="match_parent"
+        android:layout_width="398dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Search" />
+        android:text="@string/searchTagButtonText" />
 
     <Space
         android:layout_width="match_parent"
