@@ -11,6 +11,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="29dp" />
+
         <TextView
             android:id="@+id/albumsTitleText"
             android:layout_width="match_parent"
@@ -18,6 +22,10 @@
             android:text="Albums"
             android:textSize="18pt"
             />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
@@ -82,7 +90,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="60dp" />
+            android:layout_height="18dp" />
 
         <TextView
             android:id="@+id/CreateText"
