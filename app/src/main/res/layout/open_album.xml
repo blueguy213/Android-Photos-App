@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Album Name"
+            android:text="@string/albumNameText"
             android:textSize="18pt" />
 
         <ImageView
@@ -35,14 +35,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Previous" />
+                android:text="@string/previousButtonText" />
 
             <Button
                 android:id="@+id/nextPhotoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Next"/>
+                android:text="@string/nextButtonText"/>
 
         </LinearLayout>
 
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="205dp"
             android:layout_weight="1"
-            android:contentDescription="For image thumbnails"
+            android:contentDescription="@string/imageScrollViewContentDescription"
             android:fillViewport="true" />
 
         <LinearLayout
@@ -70,14 +70,14 @@
                 android:layout_width="162dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Add Photo" />
+                android:text="@string/addPhotoButtonText" />
 
             <Button
                 android:id="@+id/removePhotoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Remove Photo"/>
+                android:text="@string/removePhotoButtonText"/>
 
         </LinearLayout>
 
@@ -119,7 +119,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add Tag" />
+            android:text="@string/addTagButtonText" />
 
         <Space
             android:layout_width="match_parent"

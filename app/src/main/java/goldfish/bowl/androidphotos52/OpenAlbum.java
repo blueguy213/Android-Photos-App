@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import goldfish.bowl.androidphotos52.databinding.FragmentFirstBinding;
+import goldfish.bowl.androidphotos52.databinding.OpenAlbumBinding;
 
-public class FirstFragment extends Fragment {
+public class OpenAlbum extends Fragment {
 
-    private FragmentFirstBinding binding;
+    private OpenAlbumBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,22 +21,22 @@ public class FirstFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
+        binding = OpenAlbumBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
 
-//    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//
-//        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+//        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                NavHostFragment.findNavController(FirstFragment.this)
-//                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+//                NavHostFragment.findNavController(OpenAlbum.this)
+//                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
 //            }
 //        });
-//    }
+    }
 
     @Override
     public void onDestroyView() {

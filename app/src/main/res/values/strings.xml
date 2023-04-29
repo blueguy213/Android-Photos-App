@@ -2,12 +2,22 @@
     <string name="app_name">AndroidPhotos52</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="albums_view_label">Albums View</string>
+    <string name="open_album_label">Open Album</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
     <string name="lorem_ipsum">
         Hello World
     </string>
+    <string name = "search_view_fab_content_description">
+
+    </string>
+    <string name="addTagButtonText">Add Tag</string>
+    <string name="albumNameText">Album Name</string>
+    <string name="previousButtonText">Previous</string>
+    <string name="nextButtonText">Next</string>
+    <string name="imageScrollViewContentDescription">For image thumbnails</string>
+    <string name="addPhotoButtonText">Add Photo</string>
+    <string name="removePhotoButtonText">Remove Photo</string>
 </resources>

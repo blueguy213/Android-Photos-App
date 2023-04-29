@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import goldfish.bowl.androidphotos52.databinding.FragmentSecondBinding;
+import goldfish.bowl.androidphotos52.databinding.AlbumsViewBinding;
 
-public class SecondFragment extends Fragment {
+public class AlbumsView extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private AlbumsViewBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,19 +21,18 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = AlbumsViewBinding.inflate(inflater, container, false);
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
+        binding.userOpenAlbumButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                NavHostFragment.findNavController(AlbumsView.this)
+                        .navigate(R.id.action_AlbumsView_to_OpenAlbum);
             }
         });
     }

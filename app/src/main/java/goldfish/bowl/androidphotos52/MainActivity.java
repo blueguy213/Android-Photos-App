@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
-import androidx.core.view.WindowCompat;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -31,12 +31,27 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.searchButton.setOnClickListener(new View.OnClickListener() {
+        binding.searchViewFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.searchButton)
-                        .setAction("Action", null).show();
+
+                // TODO: Save all changes in the last fragment here
+
+                // Switch to OpenAlbum fragment here
+                FragmentManager fm = getSupportFragmentManager();
+                fm.beginTransaction().replace(R.id.nav_host_fragment_content_main, OpenAlbum.class, null).commit();
+            }
+        });
+
+        binding.albumsViewFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // TODO: Save all changes in the last fragment here
+
+                // Switch to AlbumsView fragment here
+                FragmentManager fm = getSupportFragmentManager();
+                fm.beginTransaction().replace(R.id.nav_host_fragment_content_main, AlbumsView.class, null).commit();
             }
         });
 

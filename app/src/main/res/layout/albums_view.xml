@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    tools:context=".AlbumsView">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -102,6 +102,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:dividerPadding="10dp"
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -118,40 +119,12 @@
 
             <Button
                 android:id="@+id/userCreateAlbumButton"
-                android:layout_width="82dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Create" />
 
         </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="88dp" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:layout_height="49dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/AlbumsNavButton"
-                    android:layout_width="218dp"
-                    android:layout_height="wrap_content"
-                    android:text="Albums" />
-
-                <Button
-                    android:id="@+id/SearchNavButton"
-                    android:layout_width="191dp"
-                    android:layout_height="wrap_content"
-                    android:text="Search" />
-            </LinearLayout>
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </LinearLayout>
 
