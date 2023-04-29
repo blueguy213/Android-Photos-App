@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.fragment.NavHostFragment;
 
 import goldfish.bowl.androidphotos52.databinding.AlbumsViewBinding;
@@ -31,8 +32,8 @@ public class AlbumsView extends Fragment {
         binding.userOpenAlbumButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(AlbumsView.this)
-                        .navigate(R.id.action_AlbumsView_to_OpenAlbum);
+
+
             }
         });
     }

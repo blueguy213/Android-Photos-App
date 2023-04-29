@@ -20,4 +20,5 @@
     <string name="imageScrollViewContentDescription">For image thumbnails</string>
     <string name="addPhotoButtonText">Add Photo</string>
     <string name="removePhotoButtonText">Remove Photo</string>
+    <string name="searchPhotosLabel">Search Photos</string>
 </resources>
