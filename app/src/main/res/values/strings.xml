@@ -38,4 +38,11 @@
     <string name="createButtontext">Create New Album</string>
     <string name="createAlbumPromptText">Enter new album name</string>
     <string name="createAlbumButtonText">Create</string>
+    <string name="displaysPhotoContDesc">Displays photo</string>
+    <string name="deleteTagButtonText">Delete Tag</string>
+    <string name="copyMoveTitleText">Copy or Move Photo</string>
+    <string name="copyPhotoButtonText">Copy</string>
+    <string name="movePhotoButtonText">Move</string>
+    <string name="deleteTagTitleText">Delete tag</string>
+    <string name="addTagTitleText">Add Tag</string>
 </resources>

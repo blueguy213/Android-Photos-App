@@ -55,8 +55,8 @@ public class SearchView extends Fragment {
     private void updateDisplay(Context context) {
         dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
         dmInstance.displayThumbnailsOn(binding.photoThumbScrollPane,context);
-       // dmInstance.displayAllTagTypesOn(firstTagChoiceBox);
-        //dmInstance.displayAllTagTypesOn(secondTagChoiceBox);
+       // dmInstance.displayAllTagTypesOn(firstTagSpinner);
+        //dmInstance.displayAllTagTypesOn(secondTagSpinner);
     }
 
     public void handleNextPhotoButtonClick(Context context) {
@@ -75,8 +75,8 @@ public class SearchView extends Fragment {
 
 
 
-        String firstTag = binding.firstTagChoiceBox.getText().toString();
-        String secondTag = binding.secondTagChoiceBox.getText().toString();
+        String firstTag = binding.firstTagSpinner.getText().toString();
+        String secondTag = binding.secondTagSpinner.getText().toString();
 
         String firstTagKey = null;
         String firstTagValue = null;
@@ -93,7 +93,7 @@ public class SearchView extends Fragment {
             secondTagValue = secondTag.split(": ")[1];
         }
 
-        String andOr = binding.andOrChoiceBox.getSelectedItem().toString();
+        String andOr = binding.andOrSpinner.getSelectedItem().toString();
 
         if (firstTagKey == null && secondTagKey == null) {
             AndroidUtils.showAlert(context, "Error: No tags selected", "Please select at least one tag to search by.");

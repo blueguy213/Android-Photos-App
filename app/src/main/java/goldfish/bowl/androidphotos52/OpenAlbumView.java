@@ -21,14 +21,14 @@ public class OpenAlbumView extends Fragment {
     private DataManager dmInstance;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         dmInstance = DataManager.getInstance(context);
     }
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
 
@@ -63,8 +63,8 @@ public class OpenAlbumView extends Fragment {
         dmInstance.displayThumbnailsOn(binding.photoThumbScrollPane,context);
         //Why are these methods not available in data manager?
 
-        //dmInstance.displayUnopenedAlbumsOn(destinationAlbumChoiceBox);
-        //dmInstance.displayDeletableTagsOn(selectTagToDeleteChoiceBox);
+        //dmInstance.displayUnopenedAlbumsOn(destinationAlbumSpinner);
+        //dmInstance.displayDeletableTagsOn(selectTagToDeleteSpinner);
        // dmInstance.displayCreatableTagsOn(addTagKeyBox, addTagValueBox);
     }
 
@@ -85,7 +85,7 @@ public class OpenAlbumView extends Fragment {
     }
 
     public void handleMovePhotoButtonClick(Context context) {
-        String destinationAlbumName = binding.destinationAlbumChoiceBox.getSelectedItem().toString();
+        String destinationAlbumName = binding.destinationAlbumSpinner.getSelectedItem().toString();
         if (dmInstance.copySelectedPhotoToAlbum(context, destinationAlbumName) > -1) {
             dmInstance.removeSelectedPhoto(context);
         }
@@ -93,7 +93,7 @@ public class OpenAlbumView extends Fragment {
     }
 
     public void handleCopyPhotoButtonClick(Context context) {
-        String destinationAlbumName = binding.destinationAlbumChoiceBox.getSelectedItem().toString();
+        String destinationAlbumName = binding.destinationAlbumSpinner.getSelectedItem().toString();
         dmInstance.copySelectedPhotoToAlbum(context, destinationAlbumName);
     }
 
@@ -124,7 +124,7 @@ public class OpenAlbumView extends Fragment {
 
     public void handleDeleteTagButtonClick(Context context) {
         // Get the tag from the choice box.
-        String tag = binding.selectTagToDeleteChoiceBox.getSelectedItem().toString();
+        String tag = binding.selectTagToDeleteSpinner.getSelectedItem().toString();
         //System.out.println("Tag: " + tag);
 
         // Check if the key and value are valid.
