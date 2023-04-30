@@ -1,6 +1,7 @@
 package goldfish.bowl.androidphotos52.model;
 
 import android.net.Uri;
+import android.widget.Adapter;
 
 import java.io.Serializable;
 import java.util.ArrayList;

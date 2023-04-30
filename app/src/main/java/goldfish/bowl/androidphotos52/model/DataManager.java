@@ -5,13 +5,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Size;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.core.widget.NestedScrollView;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.IOException;
 import java.io.FileOutputStream;
@@ -125,7 +125,7 @@ public class DataManager {
      * Returns all the albums for the user that is currently logged in.
      * @return The albums for the user that is currently logged in.
      */
-    public List<Album> getCurrentUserAlbums() {
+    public List<Album> getAlbums() {
         return user.getAlbums();
     }
 
@@ -145,9 +145,8 @@ public class DataManager {
      * @see android.widget.ListView
      * @see android.content.Context
      */
-    public void displayAlbumsOn(Context context, ListView listView) {
-        ArrayAdapter<Album> adapter = new ArrayAdapter<Album>(context, android.R.layout.simple_list_item_1, user.getAlbums());
-        listView.setAdapter(adapter);
+    public void displayAlbumsOn(Context context, ListView listView, Adapter adapter) {
+        listView.setAdapter((ListAdapter) adapter);
     }
 
     /**
@@ -169,6 +168,7 @@ public class DataManager {
      */
     public void addAlbum(Context context, String albumName) {
         user.addAlbum(new Album(albumName));
+        selectedPhotoIndex = openedAlbum.getPhotos().size() - 1;
         writeUser(context);
     }
 
@@ -187,16 +187,25 @@ public class DataManager {
     public void removeAlbum(Context context, String albumName) {
         user.removeAlbum(new Album(albumName));
         user.updatePhotoSet();
+        selectedPhotoIndex = Math.min(selectedPhotoIndex, openedAlbum.getPhotos().size() - 1);
         writeUser(context);
     }
 
     /**
      * Sets the currently selected album to the index of the given album.
-     * @param albumName The name of the album to select.
+     * @param index The new selected album index.
      */
-    public void selectAlbum(String albumName) {
-        selectedAlbumIndex = user.getAlbumIndexByName(albumName);
+    public void setSelectedAlbumIndex(int index) {
+        selectedAlbumIndex = index;
+    }
 
+    /**
+     * Returns the currently selected album.
+     *
+     * @return The currently selected album.
+     */
+    public int getSelectedAlbumIndex() {
+        return selectedAlbumIndex;
     }
 
     /**
