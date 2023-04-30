@@ -168,7 +168,7 @@ public class DataManager {
      */
     public void addAlbum(Context context, String albumName) {
         user.addAlbum(new Album(albumName));
-        selectedPhotoIndex = openedAlbum.getPhotos().size() - 1;
+        selectedAlbumIndex = user.getAlbums().size() - 1;
         writeUser(context);
     }
 
@@ -187,7 +187,7 @@ public class DataManager {
     public void removeAlbum(Context context, String albumName) {
         user.removeAlbum(new Album(albumName));
         user.updatePhotoSet();
-        selectedPhotoIndex = Math.min(selectedPhotoIndex, openedAlbum.getPhotos().size() - 1);
+        selectedAlbumIndex = Math.min(selectedAlbumIndex, user.getAlbums().size() - 1);
         writeUser(context);
     }
 
