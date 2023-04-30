@@ -43,6 +43,7 @@ public class SearchView extends Fragment {
 
         binding.nextPhotoButton.setOnClickListener((view1 -> handleNextPhotoButtonClick(getContext())));
         binding.prevPhotoButton.setOnClickListener((view1 -> handlePrevPhotoButtonClick(getContext())));
+        binding.searchTagButton.setOnClickListener((view1 -> handleTagSearchButtonClick(getContext())));
 
     }
 
@@ -69,11 +70,7 @@ public class SearchView extends Fragment {
         updateDisplay(context);
     }
 
-
-
     public void handleTagSearchButtonClick(Context context) {
-
-
 
         String firstTag = binding.firstTagSpinner.getText().toString();
         String secondTag = binding.secondTagSpinner.getText().toString();
