@@ -2,11 +2,17 @@ package goldfish.bowl.androidphotos52;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
@@ -40,7 +46,8 @@ public class OpenAlbumView extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.openAlbumNameText.setText(dmInstance.getOpenedAlbumName());
-        binding.removePhotoButton.setOnClickListener(view1 -> handleRemovePhotoButton(getContext())); //is this how i get context
+        binding.addPhotoButton.setOnClickListener((view1 -> handleAddPhotoButtonClick(getContext())));
+        binding.removePhotoButton.setOnClickListener(view1 -> handleRemovePhotoButton(getContext()));
         binding.nextPhotoButton.setOnClickListener((view1 -> handleNextPhotoButtonClick(getContext())));
         binding.prevPhotoButton.setOnClickListener((view1 -> handlePrevPhotoButtonClick(getContext())));
         binding.movePhotoButton.setOnClickListener((view1 -> handleMovePhotoButtonClick(getContext())));
@@ -67,6 +74,41 @@ public class OpenAlbumView extends Fragment {
         //dmInstance.displayDeletableTagsOn(selectTagToDeleteSpinner);
        // dmInstance.displayCreatableTagsOn(addTagKeyBox, addTagValueBox);
     }
+
+    public void handleAddPhotoButtonClick(Context context){
+//        FileChooser fileChooser = new FileChooser();
+//        fileChooser.setTitle("Choose a Photo");
+//        fileChooser.getExtensionFilters().addAll(
+//                new FileChooser.ExtensionFilter("All Images", "*.bmp", "*.gif", "*.jpg", "*.jpeg", "*.png"),
+//                new FileChooser.ExtensionFilter("BMP", "*.bmp"),
+//                new FileChooser.ExtensionFilter("GIF", "*.gif"),
+//                new FileChooser.ExtensionFilter("JPEG", "*.jpg", "*.jpeg"),
+//                new FileChooser.ExtensionFilter("PNG", "*.png")
+//        );
+
+//        Stage stage = new Stage();
+//        File selectedFile = fileChooser.showOpenDialog(stage);
+
+//        if (selectedFile != null) {
+//            try {
+//                String selectedFileURI = selectedFile.toURI().toString();
+//
+//                if (dmInstance.hasPhoto(selectedFileURI)) {
+//                    AndroidUtils.showAlert(context,"Error: Photo already exists!", "The photo you selected already exists in the album.");
+//                    return;
+//                }
+//
+//                dmInstance.addPhotoToOpenedAlbum(context, selectedFileURI);
+//                updateDisplay();
+//            } catch (MalformedURLException e) {
+//                AndroidUtils.showAlert(context, "Error: Invalid File", e.getMessage());
+//            }
+//        } else {
+//            AndroidUtils.showAlert(context, "Error: Enter a file!", "You did not select a file that exists.");
+//        }
+//        updateDisplay(context);
+    }
+
 
     public void handleRemovePhotoButton(Context context){ //not tested
         dmInstance.removeSelectedPhoto(context);
