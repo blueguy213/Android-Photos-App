@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,18 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/albumsTitleText"
-            android:textSize="18pt"
-            />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="15dp" />
+            android:textSize="18pt" />
 
 
         <ListView
             android:id="@+id/albumsListView"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="195dp"
+            android:scrollingCache="true"
+            android:smoothScrollbar="true"
+            android:verticalSpacing="5dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,7 +53,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="45dp" />
+            android:layout_height="17dp" />
 
         <TextView
             android:id="@+id/renameText"
@@ -136,4 +134,4 @@
     </LinearLayout>
 
 
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>
