@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -25,6 +26,8 @@ public class OpenAlbumView extends Fragment {
     private OpenAlbumViewBinding binding;
 
     private DataManager dmInstance;
+
+    private final ActivityResultLauncher<String> photoPickerLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(), (ActivityResultCallback<Uri>) uri -> onPhotoPicked(getContext(), uri));
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -44,6 +47,7 @@ public class OpenAlbumView extends Fragment {
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+
         super.onViewCreated(view, savedInstanceState);
         binding.openAlbumNameText.setText(dmInstance.getOpenedAlbumName());
         binding.addPhotoButton.setOnClickListener((view1 -> handleAddPhotoButtonClick(getContext())));
@@ -75,7 +79,20 @@ public class OpenAlbumView extends Fragment {
        // dmInstance.displayCreatableTagsOn(addTagKeyBox, addTagValueBox);
     }
 
+
+    private void onPhotoPicked(Context context, Uri uri) {
+        if (uri != null) {
+            dmInstance.addPhotoToOpenedAlbum(context, uri);
+            updateDisplay(context);
+        } else {
+            AndroidUtils.showAlert(getContext(),"Error: Photo not selected!", "You did not select a photo.");
+        }
+    }
+
     public void handleAddPhotoButtonClick(Context context){
+
+        photoPickerLauncher.launch("image/*");
+    }
 //        FileChooser fileChooser = new FileChooser();
 //        fileChooser.setTitle("Choose a Photo");
 //        fileChooser.getExtensionFilters().addAll(
@@ -107,7 +124,6 @@ public class OpenAlbumView extends Fragment {
 //            AndroidUtils.showAlert(context, "Error: Enter a file!", "You did not select a file that exists.");
 //        }
 //        updateDisplay(context);
-    }
 
 
     public void handleRemovePhotoButton(Context context){ //not tested
