@@ -137,4 +137,18 @@ public class User implements Serializable {
     public Tags getTags() {
         return tags;
     }
+
+    /**
+     * Returns the index of the album with the given name.
+     * @param albumName the name of the album
+     * @return the index of the album with the given name
+     */
+    public int getAlbumIndexByName(String albumName) {
+        for (int i = 0; i < albums.size(); i++) {
+            if (albums.get(i).getName().equals(albumName)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

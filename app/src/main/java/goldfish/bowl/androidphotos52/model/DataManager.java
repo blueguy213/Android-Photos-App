@@ -41,6 +41,7 @@ public class DataManager {
     private User user;
     private Album openedAlbum;
     private int selectedPhotoIndex;
+    private int selectedAlbumIndex;
 
     private List<Photo> searchResults;
 
@@ -187,6 +188,15 @@ public class DataManager {
         user.removeAlbum(new Album(albumName));
         user.updatePhotoSet();
         writeUser(context);
+    }
+
+    /**
+     * Sets the currently selected album to the index of the given album.
+     * @param albumName The name of the album to select.
+     */
+    public void selectAlbum(String albumName) {
+        selectedAlbumIndex = user.getAlbumIndexByName(albumName);
+
     }
 
     /**
