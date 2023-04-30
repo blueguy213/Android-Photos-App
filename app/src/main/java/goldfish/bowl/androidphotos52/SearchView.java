@@ -7,9 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
-import goldfish.bowl.androidphotos52.databinding.AlbumsViewBinding;
 import goldfish.bowl.androidphotos52.databinding.SearchViewBinding;
 
 public class SearchView extends Fragment {
@@ -17,10 +15,7 @@ public class SearchView extends Fragment {
     private SearchViewBinding binding;
 
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = SearchViewBinding.inflate(inflater, container, false);
         return binding.getRoot();

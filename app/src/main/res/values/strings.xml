@@ -29,4 +29,13 @@
     <string name="nextButtonSearchText">Next</string>
     <string name="thumbnailsContDesc">For image thumbnails</string>
     <string name="searchTagButtonText">Search</string>
+    <string name="albumsViewTitle">Albums</string>
+    <string name="openAlbumButtonText">Open Album</string>
+    <string name="deleteAlbumButtonText">Delete Album</string>
+    <string name="renameAlbumText">Rename Album</string>
+    <string name="renameAlbumPrompt">Enter new album name</string>
+    <string name="renameAlbumButtonText">Rename</string>
+    <string name="createAlbumText">Create New Album</string>
+    <string name="createAlbumPrompt">Enter new album name</string>
+    <string name="createAlbumButtonText">Create</string>
 </resources>
