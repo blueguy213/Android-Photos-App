@@ -96,8 +96,8 @@
 
     </LinearLayout>
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/andOrChip"
+    <Spinner
+        android:id="@+id/andOrChoiceBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1" />

@@ -34,7 +34,7 @@
     <string name="deleteAlbumButtonText">Delete Album</string>
     <string name="renameText">Rename Album</string>
     <string name="renameAlbumPromptText">Enter new album name</string>
-    <string name="updateButtonText">Update</string>
+    <string name="renameButtonText">Rename</string>
     <string name="createButtontext">Create New Album</string>
     <string name="createAlbumPromptText">Enter new album name</string>
     <string name="createAlbumButtonText">Create</string>

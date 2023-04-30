@@ -37,13 +37,13 @@ public class AlbumsView extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         dmInstance.displayAlbumsOn(getContext(), binding.albumsListView);
 
-        binding.userCreateAlbumButton.setOnClickListener(this::createAlbumButtonCallback);
+        binding.userCreateAlbumButton.setOnClickListener(view1 -> createAlbumButtonCallback());
         binding.userDeleteAlbumButton.setOnClickListener(view1 -> deleteAlbumButtonCallback());
         binding.userOpenAlbumButton.setOnClickListener(view1 -> openAlbumButtonCallback(getContext(), R.id.main_fragment_container));
         binding.userRenameAlbumButton.setOnClickListener(view1 -> renameAlbumButtonCallback());
     }
 
-    private void createAlbumButtonCallback(View view) {
+    private void createAlbumButtonCallback() {
         dmInstance.addAlbum(getContext(), Objects.requireNonNull(binding.userCreateAlbumField.getText()).toString());
         dmInstance.displayAlbumsOn(getContext(), binding.albumsListView);
     }

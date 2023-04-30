@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import goldfish.bowl.androidphotos52.databinding.OpenAlbumViewBinding;
 import goldfish.bowl.androidphotos52.model.DataManager;
+import goldfish.bowl.androidphotos52.utils.AndroidUtils;
 
 public class OpenAlbumView extends Fragment {
 
@@ -39,6 +40,14 @@ public class OpenAlbumView extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.openAlbumNameText.setText(dmInstance.getOpenedAlbumName());
+        binding.removePhotoButton.setOnClickListener(view1 -> handleRemovePhotoButton(getContext())); //is this how i get context
+        binding.nextPhotoButton.setOnClickListener((view1 -> handleNextPhotoButtonClick(getContext())));
+        binding.prevPhotoButton.setOnClickListener((view1 -> handlePrevPhotoButtonClick(getContext())));
+        binding.movePhotoButton.setOnClickListener((view1 -> handleMovePhotoButtonClick(getContext())));
+        binding.copyPhotoButton.setOnClickListener((view1 -> handleCopyPhotoButtonClick(getContext())));
+        binding.addTagButton.setOnClickListener((view1 -> handleAddTagButtonClick(getContext())));
+        binding.deleteTagButton.setOnClickListener((view1 -> handleDeleteTagButtonClick(getContext())));
+
     }
 
     @Override
@@ -46,5 +55,87 @@ public class OpenAlbumView extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+    /**
+     * Updates display on Album view
+     */
+    private void updateDisplay(Context context) {
+        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
+        dmInstance.displayThumbnailsOn(binding.photoThumbScrollPane,context);
+        //Why are these methods not available in data manager?
+
+        //dmInstance.displayUnopenedAlbumsOn(destinationAlbumChoiceBox);
+        //dmInstance.displayDeletableTagsOn(selectTagToDeleteChoiceBox);
+       // dmInstance.displayCreatableTagsOn(addTagKeyBox, addTagValueBox);
+    }
+
+
+    public void handleRemovePhotoButton(Context context){ //not tested
+        dmInstance.removeSelectedPhoto(context);
+        updateDisplay(context);
+    }
+
+    public void handleNextPhotoButtonClick(Context context) {
+        dmInstance.nextPhoto();
+        updateDisplay(context);
+    }
+
+    public void handlePrevPhotoButtonClick(Context context) {
+        dmInstance.previousPhoto();
+        updateDisplay(context);
+    }
+
+    public void handleMovePhotoButtonClick(Context context) {
+        String destinationAlbumName = binding.destinationAlbumChoiceBox.getSelectedItem().toString();
+        if (dmInstance.copySelectedPhotoToAlbum(context, destinationAlbumName) > -1) {
+            dmInstance.removeSelectedPhoto(context);
+        }
+        updateDisplay(context);
+    }
+
+    public void handleCopyPhotoButtonClick(Context context) {
+        String destinationAlbumName = binding.destinationAlbumChoiceBox.getSelectedItem().toString();
+        dmInstance.copySelectedPhotoToAlbum(context, destinationAlbumName);
+    }
+
+
+    public void handleAddTagButtonClick(Context context) {
+        // Get the key and value from the text fields.
+        String key = binding.addTagKeyBox.getSelectedItem().toString();
+        String value = binding.addTagValueBox.getSelectedItem().toString();
+
+        // Check if the key and value are valid.
+        if (key.isEmpty() || value.isEmpty()) {
+            AndroidUtils.showAlert(context, "Error: Invalid Tag", "You must enter a key and value for the tag.");
+            return;
+        }
+
+//        // Check if the tag should be unique
+//        if (isTagUnique.isSelected() && dmInstance.hasTagKey(key)) {
+//            JavaFXUtils.showAlert(context, "Error : Invalid Tag", "That tag is unique and already exists.");
+//            return;
+//        }
+
+        // Add the tag to the photo.
+        dmInstance.addTagToSelectedPhoto(context, key, value);
+        updateDisplay(context);
+    }
+
+
+
+    public void handleDeleteTagButtonClick(Context context) {
+        // Get the tag from the choice box.
+        String tag = binding.selectTagToDeleteChoiceBox.getSelectedItem().toString();
+        //System.out.println("Tag: " + tag);
+
+        // Check if the key and value are valid.
+        if (tag.isEmpty()) {
+            AndroidUtils.showAlert(context, "Error: No Tag Selected", "You must select a tag to delete.");
+            return;
+        }
+        // Delete the tag from the photo.
+        dmInstance.deleteTagFromSelectedPhoto(context,tag);
+        updateDisplay(context);
+    }
+
 
 }

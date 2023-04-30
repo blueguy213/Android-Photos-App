@@ -332,13 +332,6 @@ public class DataManager {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-//                Image image = new Image(photo.getPath(), THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT, true, true);
-//                ImageView thumbnail = new ImageView(image);
-//                thumbnail.setPreserveRatio(true);
-//                thumbnail.setFitWidth(THUMBNAIL_WIDTH);
-//                thumbnail.setFitHeight(THUMBNAIL_HEIGHT);
-//                thumbnail.setUserData(photo);
-////                thumbnailTilePane.getChildren().add(thumbnail);
             }
         }
     }
