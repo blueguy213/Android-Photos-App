@@ -68,7 +68,6 @@ public class OpenAlbumView extends Fragment {
        // dmInstance.displayCreatableTagsOn(addTagKeyBox, addTagValueBox);
     }
 
-
     public void handleRemovePhotoButton(Context context){ //not tested
         dmInstance.removeSelectedPhoto(context);
         updateDisplay(context);
@@ -119,7 +118,6 @@ public class OpenAlbumView extends Fragment {
         dmInstance.addTagToSelectedPhoto(context, key, value);
         updateDisplay(context);
     }
-
 
 
     public void handleDeleteTagButtonClick(Context context) {
