@@ -19,7 +19,7 @@
             android:id="@+id/albumsTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Albums"
+            android:text="@string/albumsTitleText"
             android:textSize="18pt"
             />
 
@@ -46,14 +46,14 @@
                 android:id="@+id/userOpenAlbumButton"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
-                android:text="Open Album" />
+                android:text="@string/openAlbumButtonText" />
 
             <Button
                 android:id="@+id/userDeleteAlbumButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Delete Album" />
+                android:text="@string/deleteAlbumButtonText" />
         </LinearLayout>
 
 
@@ -65,7 +65,7 @@
             android:id="@+id/renameText"
             android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:text="Rename Album"
+            android:text="@string/renameText"
             android:textSize="10pt" />
 
         <LinearLayout
@@ -81,16 +81,16 @@
                     android:id="@+id/userRenameAlbumField"
                     android:layout_width="277dp"
                     android:layout_height="55dp"
-                    android:hint="Enter new album name" />
+                    android:hint="@string/renameAlbumPromptText" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/userUpdateAlbumButton"
-                android:layout_width="82dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Update" />
+                android:text="@string/updateButtonText" />
 
         </LinearLayout>
 
@@ -102,7 +102,7 @@
             android:id="@+id/CreateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create New Album"
+            android:text="@string/createButtontext"
             android:textSize="10pt" />
 
         <LinearLayout
@@ -119,22 +119,22 @@
                     android:id="@+id/userCreateAlbumField"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:hint="Enter new album name" />
+                    android:hint="@string/createAlbumPromptText" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/userCreateAlbumButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Create" />
+                android:text="@string/createAlbumButtonText" />
 
         </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="0dp"
             android:layout_weight="1" />
 
     </LinearLayout>
