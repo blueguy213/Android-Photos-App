@@ -79,7 +79,7 @@ public class DataManager {
      */
     public void readUsers(Context context) {
         try {
-            File usersFile = new File("db/user");
+            File usersFile = new File(context.getFilesDir(), "user_data");
             if (!usersFile.exists()) {
                 usersFile.getParentFile().mkdirs();
                 usersFile.createNewFile();
@@ -111,7 +111,7 @@ public class DataManager {
      * @see java.io.File
      */
     public void writeUser(Context context) {
-        File usersFile = new File("db/user");
+        File usersFile = new File(context.getFilesDir(), "user_data");
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(usersFile))) { 
             oos.writeObject(user);
             oos.flush();
