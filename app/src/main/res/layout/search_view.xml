@@ -88,7 +88,7 @@
             android:layout_weight="1" />
 
         <AutoCompleteTextView
-            android:id="@+id/firstTagChoiceBox"
+            android:id="@+id/firstTagSpinner"
             android:layout_width="171dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -96,8 +96,8 @@
 
     </LinearLayout>
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/andOrChip"
+    <Spinner
+        android:id="@+id/andOrSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
@@ -115,7 +115,7 @@
             android:layout_weight="1" />
 
         <AutoCompleteTextView
-            android:id="@+id/secondTagChoiceBox"
+            android:id="@+id/secondTagSpinner"
             android:layout_width="152dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

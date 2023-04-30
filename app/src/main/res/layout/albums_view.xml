@@ -19,7 +19,7 @@
             android:id="@+id/albumsTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/albumsViewTitle"
+            android:text="@string/albumsTitleText"
             android:textSize="18pt"
             />
 
@@ -65,7 +65,7 @@
             android:id="@+id/renameText"
             android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:text="@string/renameAlbumText"
+            android:text="@string/renameText"
             android:textSize="10pt" />
 
         <LinearLayout
@@ -81,16 +81,16 @@
                     android:id="@+id/userRenameAlbumField"
                     android:layout_width="277dp"
                     android:layout_height="55dp"
-                    android:hint="@string/renameAlbumPrompt" />
+                    android:hint="@string/renameAlbumPromptText" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/userRenameAlbumButton"
-                android:layout_width="82dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/renameAlbumButtonText" />
+                android:text="@string/renameButtonText" />
 
         </LinearLayout>
 
@@ -102,7 +102,7 @@
             android:id="@+id/CreateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/createAlbumText"
+            android:text="@string/createButtontext"
             android:textSize="10pt" />
 
         <LinearLayout
@@ -119,13 +119,13 @@
                     android:id="@+id/userCreateAlbumField"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:hint="@string/createAlbumPrompt" />
+                    android:hint="@string/createAlbumPromptText" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/userCreateAlbumButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/createAlbumButtonText" />
@@ -134,7 +134,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="0dp"
             android:layout_weight="1" />
 
     </LinearLayout>
