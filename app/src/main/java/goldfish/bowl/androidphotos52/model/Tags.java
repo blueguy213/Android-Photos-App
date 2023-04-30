@@ -2,12 +2,11 @@ package goldfish.bowl.androidphotos52.model;
 
 import java.io.Serializable;
 
-import java.util.Set;
-import java.util.List;
-import java.util.HashSet;
+import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.ArrayList;
-
-import javafx.util.Pair;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * This class represents a list of tags in the application. Each tag is a <key, value> pair.
@@ -18,14 +17,15 @@ public class Tags implements Serializable {
     /**
      * The list of tags.
      */
-    private Set<Pair<String, Pair<Boolean, String>>> tags;
-
+    private Set<SimpleImmutableEntry<String, String>> location_tags;
+    private Set<SimpleImmutableEntry<String, String>> person_tags;
 
     /**
      * Creates a new (empty) list of tags.
      */
     public Tags() {
-        tags = new HashSet<Pair<String, Pair<Boolean, String>>>();
+        location_tags = new HashSet<SimpleImmutableEntry<String, String>>();
+        person_tags = new HashSet<SimpleImmutableEntry<String, String>>();
     }
 
     /**
@@ -35,8 +35,10 @@ public class Tags implements Serializable {
     @Override
     public String toString() {
         String result = "";
-        for (Pair<String, Pair<Boolean, String>> tag : tags) {
-            result += tag.getKey() + ": " + tag.getValue().getValue() + ", ";
+        Set<SimpleImmutableEntry<String, String>> tags = new HashSet<SimpleImmutableEntry<String, String>>(location_tags);
+        tags.addAll(person_tags);
+        for (SimpleImmutableEntry<String, String> tag : tags) {
+            result += tag.getKey() + ": " + tag.getValue() + ", ";
         }
         return result.substring(0, Math.max(0, result.length() - 2));
     }
@@ -45,8 +47,10 @@ public class Tags implements Serializable {
      * Returns a list of key, value Pairs.
      * @return the list of (key, value) string pairs for searching
      */
-    public List<Pair<String, Pair<Boolean, String>>> getPairs() {
-        return new ArrayList<Pair<String, Pair<Boolean, String>>>(tags);
+    public List<SimpleImmutableEntry<String, String>> getPairs() {
+        ArrayList<SimpleImmutableEntry<String, String>> result = new ArrayList<SimpleImmutableEntry<String, String>>(location_tags);
+        result.addAll(person_tags);
+        return (result);
     }
 
 
@@ -55,8 +59,12 @@ public class Tags implements Serializable {
      * @param key the key of the tag
      * @param value the value of the tag
      */
-    public void add(String key, String value, boolean isUnique) {
-        tags.add(new Pair<String, Pair<Boolean, String>>(key, new Pair<Boolean, String>(isUnique, value)));
+    public void add(String key, String value) {
+        if (key.equals("location")) {
+            location_tags.add(new SimpleImmutableEntry<String, String>(key, value));
+        } else {
+            person_tags.add(new SimpleImmutableEntry<String, String>(key, value));
+        }
     }
 
     /**
@@ -65,38 +73,17 @@ public class Tags implements Serializable {
      * @param value the value of the tag
      */
     public void remove(String key, String value) {
-        tags.remove(new Pair<String, Pair<Boolean, String>>(key, new Pair<Boolean, String>(false, value)));
-        tags.remove(new Pair<String, Pair<Boolean, String>>(key, new Pair<Boolean, String>(true, value)));
+        if (key.equals("location")) {
+            location_tags.remove(new SimpleImmutableEntry<String, String>(key, value));
+        } else {
+            person_tags.remove(new SimpleImmutableEntry<String, String>(key, value));
+        }
     }
 
     /**
      * Checks if the list of tags contains the given tag.
      */
     public boolean contains(String key, String value) {
-        return tags.contains(new Pair<String, Pair<Boolean, String>>(key, new Pair<Boolean, String>(false, value))) || tags.contains(new Pair<String, Pair<Boolean, String>>(key, new Pair<Boolean, String>(true, value)));
-    }
-
-    /**
-     * Checks if the list of tags contains a tag with the given key. Returns 0 -> no key, 1 -> unique key, 2 -> non-unique key.
-     */
-    public boolean isKeyUnique(String key) {
-        for (Pair<String, Pair<Boolean, String>> tag : tags) {
-            if (tag.getKey().equals(key) && tag.getValue().getKey()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Checks if the list of tags contains a tag with the given key. 
-     */
-    public boolean containsKey(String key) {
-        for (Pair<String, Pair<Boolean, String>> tag : tags) {
-            if (tag.getKey().equals(key)) {
-                return true;
-            }
-        }
-        return false;
+        return (location_tags.contains(new SimpleImmutableEntry<String, String>(key, value)) || person_tags.contains(new SimpleImmutableEntry<String, String>(key, value)));
     }
 }

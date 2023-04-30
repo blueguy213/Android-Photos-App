@@ -14,28 +14,17 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String username;
     private List<Album> albums;
     private Set<Photo> photos;
     private Tags tags;
 
     /**
      * Creates a new user with the given username.
-     * @param username the username of the user
      */
-    public User(String username) {
-        this.username = username;
+    public User() {
         this.albums = new ArrayList<Album>();
         this.photos = new HashSet<Photo>();
         this.tags = new Tags();
-    }
-
-    /**
-     * Returns the username of the user.
-     * @return the username of the user
-     */
-    public String getUsername() {
-        return username;
     }
 
     /**
@@ -134,15 +123,12 @@ public class User implements Serializable {
      * Adds the given tag to the set of tag types of the user if it does not already exist.
      * @param key the tag type to add
      * @param value the tag value to add
-     * @param isUnique is the tag repeatable
      */
-    public void addTag(String key, String value, boolean isUnique) {
-        if (isUnique) {
-            if (tags.getPairs().stream().anyMatch(p -> p.getKey().equals(key) )) {
-                return;
-            }
+    public void addTag(String key, String value) {
+        if (tags.contains(key, value)) {
+            return;
         }
-        tags.add(key, value, isUnique);
+        tags.add(key, value);
     }
 
     /**

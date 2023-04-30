@@ -5,13 +5,7 @@ import android.widget.ImageView;
 
 import java.io.Serializable;
 
-import java.time.LocalDateTime;
 
-import utils.ImageUtils;
-
-
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 /**
  * This class represents a photo in the application. A photo has a path, caption, date and time, and a dictionary of tags.
@@ -26,7 +20,6 @@ public class Photo implements Serializable {
     /**
      * Creates a new photo with the given path, caption, and date and time.
      * @param path the path of the photo
-     * @param caption the caption of the photo
      */
     public Photo(Uri path) {
         this.path = path;
@@ -54,10 +47,9 @@ public class Photo implements Serializable {
      * Adds a tag to a photo.
      * @param name the name of the tag
      * @param value the value of the tag
-     * @param isUnique whether the tag is repeatable
      */
-    public void addTag(String name, String value, boolean isUnique) {
-        tags.add(name, value, isUnique);
+    public void addTag(String name, String value) {
+        tags.add(name, value);
     }
 
     /**

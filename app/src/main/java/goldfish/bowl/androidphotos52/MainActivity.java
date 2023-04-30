@@ -1,64 +1,42 @@
 package goldfish.bowl.androidphotos52;
 
 import android.os.Bundle;
+import android.view.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
-
 import androidx.fragment.app.FragmentManager;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import android.view.Menu;
-import android.view.MenuItem;
 
 import goldfish.bowl.androidphotos52.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().setReorderingAllowed(true).replace(R.id.main_fragment_container, AlbumsView.class, null).commit();
 
-        binding.searchViewFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        binding.searchViewFab.setOnClickListener(view -> {
 
-                // TODO: Save all changes in the last fragment here
+            // TODO: Save all changes in the last fragment here
 
-                // Switch to OpenAlbumView fragment here
-                FragmentManager fm = getSupportFragmentManager();
-                fm.beginTransaction().setReorderingAllowed(true).replace(R.id.main_fragment_container, SearchView.class, null).commit();
-            }
+            // Switch to OpenAlbumView fragment here
+            FragmentManager fm1 = getSupportFragmentManager();
+            fm1.beginTransaction().setReorderingAllowed(true).replace(R.id.main_fragment_container, SearchView.class, null).commit();
         });
 
-        binding.albumsViewFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        binding.albumsViewFab.setOnClickListener(view -> {
 
-                // TODO: Save all changes in the last fragment here
+            // TODO: Save all changes in the last fragment here
 
-                // Switch to AlbumsView fragment here
-                FragmentManager fm = getSupportFragmentManager();
-                fm.beginTransaction().setReorderingAllowed(true).replace(R.id.main_fragment_container, AlbumsView.class, null).commit();
-            }
+            // Switch to AlbumsView fragment here
+            FragmentManager fm12 = getSupportFragmentManager();
+            fm12.beginTransaction().setReorderingAllowed(true).replace(R.id.main_fragment_container, AlbumsView.class, null).commit();
         });
-
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-//        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     }
 
     @Override
@@ -67,26 +45,4 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-//        return NavigationUI.navigateUp(navController, appBarConfiguration)
-//                || super.onSupportNavigateUp();
-//    }
 }

@@ -139,7 +139,7 @@ public class Album implements Serializable {
             return false;
         }
         final Album other = (Album) obj;
-        if (!this.name.equals(other.name))) {
+        if (!this.name.equals(other.name)) {
             return false;
         }
         return true;
