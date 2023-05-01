@@ -55,8 +55,8 @@ public class SearchView extends Fragment {
 
     private void updateDisplay(Context context) {
         dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
-        dmInstance.displayThumbnailsOn(binding.photoThumbScrollPane,context);
-       // dmInstance.displayAllTagTypesOn(firstTagSpinner);
+        //photoDisplayImageViewdmInstance.displayThumbnailsOn(binding.photoThumbScrollPane,context);
+        // dmInstance.displayAllTagTypesOn(firstTagSpinner);
         //dmInstance.displayAllTagTypesOn(secondTagSpinner);
     }
 

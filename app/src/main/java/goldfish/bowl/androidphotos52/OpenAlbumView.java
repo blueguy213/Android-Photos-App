@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import goldfish.bowl.androidphotos52.databinding.OpenAlbumViewBinding;
 import goldfish.bowl.androidphotos52.model.DataManager;
+import goldfish.bowl.androidphotos52.model.ThumbnailAdapter;
 import goldfish.bowl.androidphotos52.utils.AndroidUtils;
 
 public class OpenAlbumView extends Fragment {
@@ -43,8 +45,11 @@ public class OpenAlbumView extends Fragment {
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-
         super.onViewCreated(view, savedInstanceState);
+
+        ThumbnailAdapter thumbnailAdapter = new ThumbnailAdapter(requireContext(), dmInstance.getAlbums().get(dmInstance.getSelectedAlbumIndex()).getPhotos());
+        binding.photoThumbnailGridView.setAdapter(thumbnailAdapter);
+
         binding.openAlbumNameText.setText(dmInstance.getOpenedAlbumName());
         binding.addPhotoButton.setOnClickListener((view1 -> handleAddPhotoButtonClick()));
         binding.removePhotoButton.setOnClickListener(view1 -> handleRemovePhotoButton(getContext()));
@@ -61,24 +66,25 @@ public class OpenAlbumView extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-    /**
-     * Updates display on Album view
-     */
-    private void updateDisplay(Context context) {
-        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
-        dmInstance.displayThumbnailsOn(binding.photoThumbScrollPane,context);
-        //Why are these methods not available in data manager?
 
-        //dmInstance.displayUnopenedAlbumsOn(destinationAlbumSpinner);
-        //dmInstance.displayDeletableTagsOn(selectTagToDeleteSpinner);
-       // dmInstance.displayCreatableTagsOn(addTagKeyBox, addTagValueBox);
-    }
+
+//    /**
+//     * Updates display on Album view
+//     */
+//    private void updateDisplay() {
+//        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
+//        //Why are these methods not available in data manager?
+//
+//        //dmInstance.displayUnopenedAlbumsOn(destinationAlbumSpinner);
+//        //dmInstance.displayDeletableTagsOn(selectTagToDeleteSpinner);
+//       // dmInstance.displayCreatableTagsOn(addTagKeyBox, addTagValueBox);
+//    }
 
 
     private void onPhotoPicked(Context context, Uri uri) {
         if (uri != null) {
             dmInstance.addPhotoToOpenedAlbum(context, uri);
-            updateDisplay(context);
+            dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
         } else {
             AndroidUtils.showAlert(getContext(),"Error: Photo not selected!", "You did not select a photo.");
         }
@@ -117,22 +123,22 @@ public class OpenAlbumView extends Fragment {
 //        } else {
 //            AndroidUtils.showAlert(context, "Error: Enter a file!", "You did not select a file that exists.");
 //        }
-//        updateDisplay(context);
+//        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
 
 
     public void handleRemovePhotoButton(Context context){ //not tested
         dmInstance.removeSelectedPhoto(context);
-        updateDisplay(context);
+        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
     }
 
     public void handleNextPhotoButtonClick(Context context) {
         dmInstance.nextPhoto();
-        updateDisplay(context);
+        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
     }
 
     public void handlePrevPhotoButtonClick(Context context) {
         dmInstance.previousPhoto();
-        updateDisplay(context);
+        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
     }
 
     public void handleMovePhotoButtonClick(Context context) {
@@ -140,7 +146,7 @@ public class OpenAlbumView extends Fragment {
         if (dmInstance.copySelectedPhotoToAlbum(context, destinationAlbumName) > -1) {
             dmInstance.removeSelectedPhoto(context);
         }
-        updateDisplay(context);
+        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
     }
 //
 //    public void handleCopyPhotoButtonClick(Context context) {
@@ -168,7 +174,7 @@ public class OpenAlbumView extends Fragment {
 //
 //        // Add the tag to the photo.
 //        dmInstance.addTagToSelectedPhoto(context, key, value);
-//        updateDisplay(context);
+//        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
 //    }
 
 
@@ -184,7 +190,7 @@ public class OpenAlbumView extends Fragment {
 //        }
 //        // Delete the tag from the photo.
 //        dmInstance.deleteTagFromSelectedPhoto(context,tag);
-//        updateDisplay(context);
+//        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
 //    }
 
 

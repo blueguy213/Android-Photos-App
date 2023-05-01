@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.util.Size;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -351,36 +352,35 @@ public class DataManager {
         return selectedPhotoIndex;
     }
 
-    /**
-     * Displays the thumbnails of the photos in the album.
-     */
-    public void displayThumbnailsOn(NestedScrollView thumbnailScrollView, Context context) {
-        thumbnailScrollView.removeAllViews();
-        ContentResolver cr = context.getContentResolver();
-        if (openedAlbum == null) {
-            for (Photo photo : searchResults) {
-                try {
-                    ImageView thumbnail = new ImageView(context);
-                    Bitmap bm = cr.loadThumbnail(photo.getPath(), new Size(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT), null);
-                    thumbnail.setImageBitmap(bm);
-                    thumbnailScrollView.addView(thumbnail);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } else {
-            for (Photo photo : openedAlbum.getPhotos()) {
-                try {
-                    ImageView thumbnail = new ImageView(context);
-                    Bitmap bm = cr.loadThumbnail(photo.getPath(), new Size(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT), null);
-                    thumbnail.setImageBitmap(bm);
-                    thumbnailScrollView.addView(thumbnail);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+//    /**
+//     * Displays the thumbnails of the photos in the album.
+//     */
+//    public void displayThumbnailsOn(GridView thumbnailGridView, Context context) {
+//        ContentResolver cr = context.getContentResolver();
+//        if (openedAlbum == null) {
+//            for (Photo photo : searchResults) {
+//                try {
+//                    ImageView thumbnail = new ImageView(context);
+//                    Bitmap bm = cr.loadThumbnail(photo.getPath(), new Size(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT), null);
+//                    thumbnail.setImageBitmap(bm);
+//                    thumbnailGridView.addView(thumbnail);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        } else {
+//            for (Photo photo : openedAlbum.getPhotos()) {
+//                try {
+//                    ImageView thumbnail = new ImageView(context);
+//                    Bitmap bm = cr.loadThumbnail(photo.getPath(), new Size(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT), null);
+//                    thumbnail.setImageBitmap(bm);
+//                    thumbnailGridView.addView(thumbnail);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//    }
 
 //    /**
 //     * Display the creatable choices of tags on the given key and value ComboBoxes.
