@@ -1,12 +1,8 @@
 package goldfish.bowl.androidphotos52;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,14 +46,13 @@ public class OpenAlbumView extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
         binding.openAlbumNameText.setText(dmInstance.getOpenedAlbumName());
-        binding.addPhotoButton.setOnClickListener((view1 -> handleAddPhotoButtonClick(getContext())));
+        binding.addPhotoButton.setOnClickListener((view1 -> handleAddPhotoButtonClick()));
         binding.removePhotoButton.setOnClickListener(view1 -> handleRemovePhotoButton(getContext()));
         binding.nextPhotoButton.setOnClickListener((view1 -> handleNextPhotoButtonClick(getContext())));
         binding.prevPhotoButton.setOnClickListener((view1 -> handlePrevPhotoButtonClick(getContext())));
         binding.movePhotoButton.setOnClickListener((view1 -> handleMovePhotoButtonClick(getContext())));
-        binding.copyPhotoButton.setOnClickListener((view1 -> handleCopyPhotoButtonClick(getContext())));
-        binding.addTagButton.setOnClickListener((view1 -> handleAddTagButtonClick(getContext())));
-        binding.deleteTagButton.setOnClickListener((view1 -> handleDeleteTagButtonClick(getContext())));
+//        binding.addTagButton.setOnClickListener((view1 -> handleAddTagButtonClick(getContext())));
+//        binding.deleteTagButton.setOnClickListener((view1 -> handleDeleteTagButtonClick(getContext())));
 
     }
 
@@ -89,8 +84,7 @@ public class OpenAlbumView extends Fragment {
         }
     }
 
-    public void handleAddPhotoButtonClick(Context context){
-
+    public void handleAddPhotoButtonClick(){
         photoPickerLauncher.launch("image/*");
     }
 //        FileChooser fileChooser = new FileChooser();
@@ -148,50 +142,50 @@ public class OpenAlbumView extends Fragment {
         }
         updateDisplay(context);
     }
+//
+//    public void handleCopyPhotoButtonClick(Context context) {
+//        String destinationAlbumName = binding.destinationAlbumSpinner.getSelectedItem().toString();
+//        dmInstance.copySelectedPhotoToAlbum(context, destinationAlbumName);
+//    }
 
-    public void handleCopyPhotoButtonClick(Context context) {
-        String destinationAlbumName = binding.destinationAlbumSpinner.getSelectedItem().toString();
-        dmInstance.copySelectedPhotoToAlbum(context, destinationAlbumName);
-    }
 
-
-    public void handleAddTagButtonClick(Context context) {
-        // Get the key and value from the text fields.
-        String key = binding.addTagKeyBox.getSelectedItem().toString();
-        String value = binding.addTagValueBox.getSelectedItem().toString();
-
-        // Check if the key and value are valid.
-        if (key.isEmpty() || value.isEmpty()) {
-            AndroidUtils.showAlert(context, "Error: Invalid Tag", "You must enter a key and value for the tag.");
-            return;
-        }
-
-//        // Check if the tag should be unique
-//        if (isTagUnique.isSelected() && dmInstance.hasTagKey(key)) {
-//            JavaFXUtils.showAlert(context, "Error : Invalid Tag", "That tag is unique and already exists.");
+//    public void handleAddTagButtonClick(Context context) {
+//        // Get the key and value from the text fields.
+//        String key = binding.addTagKeyBox.getSelectedItem().toString();
+//        String value = binding.addTagValueBox.getSelectedItem().toString();
+//
+//        // Check if the key and value are valid.
+//        if (key.isEmpty() || value.isEmpty()) {
+//            AndroidUtils.showAlert(context, "Error: Invalid Tag", "You must enter a key and value for the tag.");
 //            return;
 //        }
+//
+////        // Check if the tag should be unique
+////        if (isTagUnique.isSelected() && dmInstance.hasTagKey(key)) {
+////            JavaFXUtils.showAlert(context, "Error : Invalid Tag", "That tag is unique and already exists.");
+////            return;
+////        }
+//
+//        // Add the tag to the photo.
+//        dmInstance.addTagToSelectedPhoto(context, key, value);
+//        updateDisplay(context);
+//    }
 
-        // Add the tag to the photo.
-        dmInstance.addTagToSelectedPhoto(context, key, value);
-        updateDisplay(context);
-    }
 
-
-    public void handleDeleteTagButtonClick(Context context) {
-        // Get the tag from the choice box.
-        String tag = binding.selectTagToDeleteSpinner.getSelectedItem().toString();
-        //System.out.println("Tag: " + tag);
-
-        // Check if the key and value are valid.
-        if (tag.isEmpty()) {
-            AndroidUtils.showAlert(context, "Error: No Tag Selected", "You must select a tag to delete.");
-            return;
-        }
-        // Delete the tag from the photo.
-        dmInstance.deleteTagFromSelectedPhoto(context,tag);
-        updateDisplay(context);
-    }
+//    public void handleDeleteTagButtonClick(Context context) {
+//        // Get the tag from the choice box.
+//        String tag = binding.selectTagToDeleteSpinner.getSelectedItem().toString();
+//        //System.out.println("Tag: " + tag);
+//
+//        // Check if the key and value are valid.
+//        if (tag.isEmpty()) {
+//            AndroidUtils.showAlert(context, "Error: No Tag Selected", "You must select a tag to delete.");
+//            return;
+//        }
+//        // Delete the tag from the photo.
+//        dmInstance.deleteTagFromSelectedPhoto(context,tag);
+//        updateDisplay(context);
+//    }
 
 
 }

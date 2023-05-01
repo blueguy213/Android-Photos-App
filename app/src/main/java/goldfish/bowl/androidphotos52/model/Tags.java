@@ -17,15 +17,15 @@ public class Tags implements Serializable {
     /**
      * The list of tags.
      */
-    private Set<SimpleImmutableEntry<String, String>> location_tags;
-    private Set<SimpleImmutableEntry<String, String>> person_tags;
+    private String location_tag;
+    private Set<String> person_tags;
 
     /**
      * Creates a new (empty) list of tags.
      */
     public Tags() {
-        location_tags = new HashSet<SimpleImmutableEntry<String, String>>();
-        person_tags = new HashSet<SimpleImmutableEntry<String, String>>();
+        location_tag = "";
+        person_tags = new HashSet<String>();
     }
 
     /**
@@ -35,12 +35,11 @@ public class Tags implements Serializable {
     @Override
     public String toString() {
         String result = "";
-        Set<SimpleImmutableEntry<String, String>> tags = new HashSet<SimpleImmutableEntry<String, String>>(location_tags);
-        tags.addAll(person_tags);
-        for (SimpleImmutableEntry<String, String> tag : tags) {
-            result += tag.getKey() + ": " + tag.getValue() + ", ";
+        for (String tag : person_tags) {
+            result += "person: " + tag + ", ";
         }
-        return result.substring(0, Math.max(0, result.length() - 2));
+        result += "location: " + location_tag;
+        return result;
     }
 
     /**
@@ -48,8 +47,11 @@ public class Tags implements Serializable {
      * @return the list of (key, value) string pairs for searching
      */
     public List<SimpleImmutableEntry<String, String>> getPairs() {
-        ArrayList<SimpleImmutableEntry<String, String>> result = new ArrayList<SimpleImmutableEntry<String, String>>(location_tags);
-        result.addAll(person_tags);
+        ArrayList<SimpleImmutableEntry<String, String>> result = new ArrayList<SimpleImmutableEntry<String, String>>();
+        for (String tag : person_tags) {
+            result.add(new SimpleImmutableEntry<String, String>("person", tag));
+        }
+        result.add(new SimpleImmutableEntry<String, String>("location", location_tag));
         return (result);
     }
 
@@ -61,9 +63,9 @@ public class Tags implements Serializable {
      */
     public void add(String key, String value) {
         if (key.equals("location")) {
-            location_tags.add(new SimpleImmutableEntry<String, String>(key, value));
+            location_tag = value;
         } else {
-            person_tags.add(new SimpleImmutableEntry<String, String>(key, value));
+            person_tags.add(value);
         }
     }
 
@@ -74,9 +76,9 @@ public class Tags implements Serializable {
      */
     public void remove(String key, String value) {
         if (key.equals("location")) {
-            location_tags.remove(new SimpleImmutableEntry<String, String>(key, value));
+            location_tag = "";
         } else {
-            person_tags.remove(new SimpleImmutableEntry<String, String>(key, value));
+            person_tags.remove(value);
         }
     }
 
@@ -84,6 +86,6 @@ public class Tags implements Serializable {
      * Checks if the list of tags contains the given tag.
      */
     public boolean contains(String key, String value) {
-        return (location_tags.contains(new SimpleImmutableEntry<String, String>(key, value)) || person_tags.contains(new SimpleImmutableEntry<String, String>(key, value)));
+        return ((key.equals("location") && value.equals(location_tag)) || (key.equals("person") && person_tags.contains(value)));
     }
 }

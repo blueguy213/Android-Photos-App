@@ -100,7 +100,10 @@ public class DataManager {
             }
             ois.close();
         } catch (IOException | ClassNotFoundException e) {
-            AndroidUtils.showAlert(context, "Invalid File", e.getMessage());
+            // Delete the file if it is corrupted.
+            File usersFile = new File(context.getFilesDir(), "user_data");
+            usersFile.delete();
+            AndroidUtils.showAlert(context, "Invalid File Deleted", e.getMessage());
         }
     }
 
@@ -205,7 +208,11 @@ public class DataManager {
      * @return The currently selected album.
      */
     public int getSelectedAlbumIndex() {
-        return selectedAlbumIndex;
+        if (user.getAlbums().isEmpty()) {
+            return -1;
+        } else {
+            return selectedAlbumIndex;
+        }
     }
 
     /**
@@ -280,16 +287,20 @@ public class DataManager {
      */
     public void displaySelectedPhotoOn(ImageView imageView) {
         if (openedAlbum == null) {
-            // Display a stock photo if the album is empty.
+            // Clear ImageView if the album is empty.
             if (searchResults.size() != 0) {
                 Photo selectedPhoto = searchResults.get(selectedPhotoIndex);
                 selectedPhoto.displayOn(imageView);
+            } else {
+                imageView.setImageDrawable(null);
             }
         } else {
-            // Display a stock photo if the album is empty.
+            // Clear ImageView if the album is empty.
             if (openedAlbum.getPhotos().size() != 0) {
                 Photo selectedPhoto = openedAlbum.getPhotoAtIndex(selectedPhotoIndex);
                 selectedPhoto.displayOn(imageView);
+            } else {
+                imageView.setImageDrawable(null);
             }
         }
     }
@@ -299,9 +310,17 @@ public class DataManager {
      */
     public void nextPhoto() {
         if (openedAlbum == null) {
-            selectedPhotoIndex = (selectedPhotoIndex + 1) % searchResults.size();
+            if (searchResults.size() == 0) {
+                selectedPhotoIndex = 0;
+            } else {
+                selectedPhotoIndex = (selectedPhotoIndex + 1) % searchResults.size();
+            }
         } else {
-            selectedPhotoIndex = (selectedPhotoIndex + 1) % openedAlbum.getPhotos().size();
+            if (openedAlbum.getPhotos().size() == 0) {
+                selectedPhotoIndex = 0;
+            } else {
+                selectedPhotoIndex = (selectedPhotoIndex + 1) % openedAlbum.getPhotos().size();
+            }
         }
     }
 
@@ -310,9 +329,17 @@ public class DataManager {
      */
     public void previousPhoto() {
         if (openedAlbum == null) {
-            selectedPhotoIndex = (selectedPhotoIndex - 1 + searchResults.size()) % searchResults.size();
+            if (searchResults.size() == 0) {
+                selectedPhotoIndex = 0;
+            } else {
+                selectedPhotoIndex = (selectedPhotoIndex - 1 + searchResults.size()) % searchResults.size();
+            }
         } else {
-            selectedPhotoIndex = (selectedPhotoIndex - 1 + openedAlbum.getPhotos().size()) % openedAlbum.getPhotos().size();
+            if (openedAlbum.getPhotos().size() == 0) {
+                selectedPhotoIndex = 0;
+            } else {
+                selectedPhotoIndex = (selectedPhotoIndex - 1 + openedAlbum.getPhotos().size()) % openedAlbum.getPhotos().size();
+            }
         }
         
     }

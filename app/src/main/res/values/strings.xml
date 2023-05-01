@@ -42,7 +42,19 @@
     <string name="deleteTagButtonText">Delete Tag</string>
     <string name="copyMoveTitleText">Copy or Move Photo</string>
     <string name="copyPhotoButtonText">Copy</string>
-    <string name="movePhotoButtonText">Move</string>
+    <string name="movePhotoButtonText">Move Photo</string>
     <string name="deleteTagTitleText">Delete tag</string>
     <string name="addTagTitleText">Add Tag</string>
+    <string name="addLocationTagLabel">Add Location</string>
+    <string name="editPhotoButton">Edit Photo</string>
+    <string name="editPhotoButtonText">Edit Photo</string>
+    <string name="addPersonTagLabel">Add Person</string>
+    <string name="deleteLocationTagLabel">Delete Location</string>
+    <string name="deletePersonTagLabel">Delete Person</string>
+    <string name="addLocationAutocompleteText">AutoCompleteTextView</string>
+    <string name="addLocationButtonText">Add Location</string>
+    <string name="addPersonAutocompleteText">AutoCompleteTextView</string>
+    <string name="addPersonButtonText">Add Person</string>
+    <string name="deleteLocationButtonText">Delete Location</string>
+    <string name="deletePersonButtonText">Delete Person</string>
 </resources>
