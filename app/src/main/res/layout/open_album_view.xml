@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -22,23 +18,23 @@
             android:text="@string/albumNameText"
             android:textSize="18pt" />
 
-        <Button
-            android:id="@+id/editPhotoButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/editPhotoButtonText" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/photoDisplayImageView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="160dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/editPhotoButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/editPhotoButtonText" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <Button
@@ -64,23 +60,23 @@
     <GridView
         android:id="@+id/photoThumbnailGridView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:numColumns="auto_fit"
+        android:layout_height="145dp"
         android:columnWidth="80dp"
-        android:stretchMode="columnWidth"
         android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
         android:verticalSpacing="10dp">
 
     </GridView>
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="62dp" />
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_weight="1"
+        android:layout_weight="0"
         android:orientation="horizontal">
 
         <Button
@@ -98,10 +94,6 @@
             android:text="@string/addPhotoButtonText" />
     </LinearLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -117,7 +109,7 @@
             android:id="@+id/movePhotoButton"
             android:layout_width="165dp"
             android:layout_height="match_parent"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:layout_weight="1"
             android:text="@string/movePhotoButtonText" />
 
