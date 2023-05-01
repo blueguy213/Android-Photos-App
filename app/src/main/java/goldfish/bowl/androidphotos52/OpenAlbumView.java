@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import goldfish.bowl.androidphotos52.databinding.OpenAlbumViewBinding;
+import goldfish.bowl.androidphotos52.model.Album;
 import goldfish.bowl.androidphotos52.model.DataManager;
 import goldfish.bowl.androidphotos52.model.ThumbnailAdapter;
 import goldfish.bowl.androidphotos52.utils.AndroidUtils;
@@ -142,8 +143,12 @@ public class OpenAlbumView extends Fragment {
     }
 
     public void handleMovePhotoButtonClick(Context context) {
-        String destinationAlbumName = binding.destinationAlbumSpinner.getSelectedItem().toString();
-        if (dmInstance.copySelectedPhotoToAlbum(context, destinationAlbumName) > -1) {
+        Album destinationAlbum = (Album) binding.destinationAlbumSpinner.getSelectedItem();
+        if (destinationAlbum == null) {
+            AndroidUtils.showAlert(context, "Error: No Destination Album Selected", "You must select a destination album to move photo.");
+            return;
+        }
+        if (dmInstance.copySelectedPhotoToAlbum(context, destinationAlbum.toString()) > -1) {
             dmInstance.removeSelectedPhoto(context);
         }
         dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
