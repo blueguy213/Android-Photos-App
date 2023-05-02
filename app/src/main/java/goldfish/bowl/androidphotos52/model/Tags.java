@@ -18,18 +18,18 @@ public class Tags implements Serializable {
      * The list of tags.
      */
     private String location_tag;
-    private Set<String> person_tags;
+    private List<String> person_tags;
 
     /**
      * Creates a new (empty) list of tags.
      */
     public Tags() {
         location_tag = "";
-        person_tags = new HashSet<String>();
+        person_tags = new ArrayList<String>();
     }
 
     public List<String> getPeopleTags() {
-        return new ArrayList<>(person_tags);
+        return person_tags;
     }
 
     /**
