@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,7 @@ import java.util.Objects;
 import goldfish.bowl.androidphotos52.databinding.EditPhotoViewBinding;
 import goldfish.bowl.androidphotos52.model.Album;
 import goldfish.bowl.androidphotos52.model.DataManager;
+import goldfish.bowl.androidphotos52.model.Photo;
 import goldfish.bowl.androidphotos52.model.Tags;
 import goldfish.bowl.androidphotos52.utils.AndroidUtils;
 
@@ -24,6 +26,7 @@ public class EditPhotoView extends Fragment {
 
     private DataManager dmInstance;
     private EditPhotoViewBinding binding;
+    private ArrayAdapter<String> deletePeopleTagAdapter;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -35,23 +38,29 @@ public class EditPhotoView extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = EditPhotoViewBinding.inflate(inflater, container, false);
-        binding.addLocationButton.setOnClickListener(view1 -> handleAddLocationButton(getContext()));
-        binding.addPersonButton.setOnClickListener((view1 -> handleAddPersonButton(getContext())));
-
-//        List<String> peopleTags = dmInstance.getPeopleTags();
-
-        binding.tagsDisplayText.setText(dmInstance.getPeopleTags().toString());
-        dmInstance.displaySelectedPhotoOn(binding.imageView);
         return binding.getRoot();
+    }
+    public void updateDisplay(){
+        Photo photo = dmInstance.getOpenedAlbumPhotos().get(dmInstance.getSelectedPhotoIndex());
+        String tagText = "";
+        for (AbstractMap.SimpleImmutableEntry<String, String> tag : photo.getTags().getPairs()) {
+            tagText += tag.getKey() + ": " + tag.getValue() + ", ";
+        }
+        binding.tagsDisplayText.setText(tagText);
+        binding.deletePersonSpinner.setAdapter(deletePeopleTagAdapter);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.addLocationButton.setOnClickListener(view1 -> handleAddLocationButton(getContext()));
+        binding.addPersonButton.setOnClickListener((view1 -> handleAddPersonButton(getContext())));
+        binding.deleteLocationButton.setOnClickListener((view1 -> handleDeleteLocationButtonClick(getContext())));
+        deletePeopleTagAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, dmInstance.getOpenedAlbumPhotos().get(dmInstance.getSelectedPhotoIndex()).getPeopleTags());
+        dmInstance.displaySelectedPhotoOn(binding.imageView);
+        updateDisplay();
 
-//        List<String> tagValues = dmInstance.getPeopleTags();
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,tagValues);
-//        binding.deletePersonSpinner.setAdapter(adapter);
+        List<String> tagValues = dmInstance.getPeopleTags();
 
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 //                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
@@ -79,6 +88,7 @@ public class EditPhotoView extends Fragment {
 
         // Add the tag to the photo.
         dmInstance.addTagToSelectedPhoto(context, "Location", value);
+        updateDisplay();
        // dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
 
     }
@@ -91,6 +101,7 @@ public class EditPhotoView extends Fragment {
             return;
         }
         dmInstance.addTagToSelectedPhoto(context, "People", value);
+        updateDisplay();
     }
 //
 //        // Add the tag to the photo.
@@ -123,9 +134,10 @@ public class EditPhotoView extends Fragment {
 
 //
 
-    public void deleteLocationButtonClick(Context context) {
+    public void handleDeleteLocationButtonClick(Context context) {
 
-        dmInstance.deleteTagFromSelectedPhoto(context,"location: x");
+        dmInstance.deleteTagFromSelectedPhoto(context,"Location: x");
+        updateDisplay();
     }
 
     public void deletePersonButtonClick(Context context) {
@@ -141,6 +153,7 @@ public class EditPhotoView extends Fragment {
         // Delete the tag from the photo.
         dmInstance.deleteTagFromSelectedPhoto(context,tag);
         dmInstance.displaySelectedPhotoOn(binding.imageView);
+        updateDisplay();
     }
 
 //    public void handleDeleteTagButtonClick(Context context) {

@@ -28,6 +28,10 @@ public class Tags implements Serializable {
         person_tags = new HashSet<String>();
     }
 
+    public List<String> getPeopleTags() {
+        return new ArrayList<>(person_tags);
+    }
+
     /**
      * Prints the list of tags.
      * @return the list of tags as a string

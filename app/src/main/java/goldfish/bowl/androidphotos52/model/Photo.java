@@ -4,7 +4,7 @@ import android.net.Uri;
 import android.widget.ImageView;
 
 import java.io.Serializable;
-
+import java.util.List;
 
 
 /**
@@ -40,6 +40,10 @@ public class Photo implements Serializable {
      */
     public Tags getTags() {
         return tags;
+    }
+
+    public List<String> getPeopleTags() {
+        return tags.getPeopleTags();
     }
 
 
