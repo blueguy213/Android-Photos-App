@@ -59,7 +59,6 @@ public class OpenAlbumView extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         thumbnailAdapter = new ThumbnailAdapter(requireContext(), dmInstance.getAlbums().get(dmInstance.getSelectedAlbumIndex()).getPhotos());
-        updateDisplay();
         binding.openAlbumNameText.setText(dmInstance.getOpenedAlbumName());
         binding.addPhotoButton.setOnClickListener((view1 -> handleAddPhotoButtonClick()));
         binding.removePhotoButton.setOnClickListener(view1 -> handleRemovePhotoButton(getContext()));
@@ -71,6 +70,7 @@ public class OpenAlbumView extends Fragment {
         unopenedAlbums.remove(dmInstance.getSelectedAlbumIndex());
         ArrayAdapter<Album> adapter = new ArrayAdapter<Album>(getContext(), android.R.layout.simple_spinner_item,unopenedAlbums);
         binding.destinationAlbumSpinner.setAdapter(adapter);
+        updateDisplay();
     }
 
     @Override
@@ -90,6 +90,10 @@ public class OpenAlbumView extends Fragment {
     }
 
     public void handleEditPhotoButtonClick(Context context){
+        if (dmInstance.getSelectedPhotoIndex() == -1 || dmInstance.getOpenedAlbumPhotos().size() == 0) {
+            AndroidUtils.showAlert(context, "Error: No Photo Selected", "You must select a photo to edit.");
+            return;
+        }
         AndroidUtils.switchFragment(context, R.id.main_fragment_container, new EditPhotoView());
     }
 
