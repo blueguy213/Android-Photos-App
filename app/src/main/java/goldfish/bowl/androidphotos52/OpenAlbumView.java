@@ -66,7 +66,7 @@ public class OpenAlbumView extends Fragment {
         binding.nextPhotoButton.setOnClickListener((view1 -> handleNextPhotoButtonClick(getContext())));
         binding.prevPhotoButton.setOnClickListener((view1 -> handlePrevPhotoButtonClick(getContext())));
         binding.movePhotoButton.setOnClickListener((view1 -> handleMovePhotoButtonClick(getContext())));
-        binding.editPhotoButton.setOnClickListener((view1 -> AndroidUtils.switchFragment(getContext(), R.id.main_fragment_container, new EditPhotoView())));
+        binding.editPhotoButton.setOnClickListener((view1 -> handleEditPhotoButtonClick(getContext())));
         List<Album> unopenedAlbums = new ArrayList<Album>(dmInstance.getAlbums());
         unopenedAlbums.remove(dmInstance.getSelectedAlbumIndex());
         ArrayAdapter<Album> adapter = new ArrayAdapter<Album>(getContext(), android.R.layout.simple_spinner_item,unopenedAlbums);
@@ -87,6 +87,11 @@ public class OpenAlbumView extends Fragment {
             AndroidUtils.showAlert(getContext(),"Error: Photo not selected!", "You did not select a photo.");
         }
         updateDisplay();
+    }
+
+    public void handleEditPhotoButtonClick(Context context){
+        dmInstance.closeAlbum(context);
+        AndroidUtils.switchFragment(context, R.id.main_fragment_container, new EditPhotoView());
     }
 
     public void handleAddPhotoButtonClick(){

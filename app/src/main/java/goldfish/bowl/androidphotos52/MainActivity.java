@@ -7,13 +7,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import goldfish.bowl.androidphotos52.databinding.ActivityMainBinding;
+import goldfish.bowl.androidphotos52.model.DataManager;
 
 public class MainActivity extends AppCompatActivity {
+
+    private DataManager dmInstance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        dmInstance = DataManager.getInstance(this);
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -22,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         binding.searchViewFab.setOnClickListener(view -> {
 
-            // TODO: Save all changes in the last fragment here
+            dmInstance.closeAlbum(this);
+            dmInstance.prepareSearchResults();
 
             // Switch to OpenAlbumView fragment here
             FragmentManager fm1 = getSupportFragmentManager();

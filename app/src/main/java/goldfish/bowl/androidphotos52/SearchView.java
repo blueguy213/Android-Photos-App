@@ -39,20 +39,11 @@ public class SearchView extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        searchResultsAdapter = new ThumbnailAdapter(requireContext(), dmInstance.getAllPhotos());
-//        binding.userOpenAlbumButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                NavHostFragment.findNavController(SearchView.this)
-//                        .navigate(R.id.action_AlbumsView_to_OpenAlbum);
-//            }
-//        });
-
+        searchResultsAdapter = new ThumbnailAdapter(requireContext(), dmInstance.searchResults);
         updateDisplay(getContext());
         binding.nextPhotoButton.setOnClickListener((view1 -> handleNextPhotoButtonClick(getContext())));
         binding.prevPhotoButton.setOnClickListener((view1 -> handlePrevPhotoButtonClick(getContext())));
         binding.searchTagButton.setOnClickListener((view1 -> handleTagSearchButtonClick(getContext())));
-
     }
 
     @Override
@@ -103,7 +94,7 @@ public class SearchView extends Fragment {
         String andOr = binding.andOrSpinner.getSelectedItem().toString();
 
         if (firstTagKey == null && secondTagKey == null) {
-            AndroidUtils.showAlert(context, "Error: No tags selected", "Please select at least one tag to search by.");
+            AndroidUtils.showAlert(context, "Error: No tags selected", "Please select at least one  tag to search by.");
             return;
         } else if (firstTagKey == null) {
             dmInstance.filterSearchResultsByOneTag(secondTagKey, secondTagValue);

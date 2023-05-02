@@ -45,7 +45,7 @@ public class DataManager {
     private int selectedPhotoIndex;
     private int selectedAlbumIndex;
 
-    private List<Photo> searchResults;
+    public List<Photo> searchResults;
 
     /**
      * Create a new DataManager object.

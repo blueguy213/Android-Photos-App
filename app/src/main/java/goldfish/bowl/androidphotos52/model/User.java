@@ -16,7 +16,8 @@ public class User implements Serializable {
 
     private List<Album> albums;
     private Set<Photo> photos;
-    private Tags tags;
+    private Set<String> location_tags;
+    private Set<String> people_tags;
 
     /**
      * Creates a new user with the given username.
@@ -24,7 +25,8 @@ public class User implements Serializable {
     public User() {
         this.albums = new ArrayList<Album>();
         this.photos = new HashSet<Photo>();
-        this.tags = new Tags();
+        this.location_tags = new HashSet<String>();
+        this.people_tags = new HashSet<String>();
     }
 
     /**
@@ -125,17 +127,34 @@ public class User implements Serializable {
      * @param value the tag value to add
      */
     public void addTag(String key, String value) {
-        if (tags.contains(key, value)) {
-            return;
+        if (key.equals("location")) {
+            location_tags.add(value);
+        } else if (key.equals("person")) {
+            people_tags.add(value);
         }
-        tags.add(key, value);
+    }
+
+//    /**
+//     * Gets a list of all tags of the user.
+//     */
+//    public Tags getTags() {
+//        return tags;
+//    }
+
+    /**
+     * Returns the set of location tags of the user.
+     * @return the set of location tags of the user
+     */
+    public Set<String> getLocationTags() {
+        return location_tags;
     }
 
     /**
-     * Gets a list of all tags of the user.
+     * Returns the set of people tags of the user.
+     * @return the set of people tags of the user
      */
-    public Tags getTags() {
-        return tags;
+    public Set<String> getPeopleTags() {
+        return people_tags;
     }
 
     /**
