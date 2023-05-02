@@ -216,6 +216,10 @@ public class DataManager {
         }
     }
 
+    public List<Photo> getOpenedAlbumPhotos() {
+        return openedAlbum.getPhotos();
+    }
+
     /**
      * Sets the currently selected album.
      * @param albumName The name of the album to open.
