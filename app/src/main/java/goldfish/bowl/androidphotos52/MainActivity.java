@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.albumsViewFab.setOnClickListener(view -> {
 
-            // TODO: Save all changes in the last fragment here
+            dmInstance.closeAlbum(this);
 
             // Switch to AlbumsView fragment here
             FragmentManager fm12 = getSupportFragmentManager();

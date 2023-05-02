@@ -90,7 +90,6 @@ public class OpenAlbumView extends Fragment {
     }
 
     public void handleEditPhotoButtonClick(Context context){
-        dmInstance.closeAlbum(context);
         AndroidUtils.switchFragment(context, R.id.main_fragment_container, new EditPhotoView());
     }
 
