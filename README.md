@@ -7,5 +7,18 @@
 # TO DO
 
 [X ] Implement a selected album method
-[SK] Auto Complete Text view for SearchView Tags
 [X ] Implement Add Photo in OpenAlbumView from device storage
+
+
+[SK] Auto Complete Text view for SearchView Tags
+[SK] Photo permission bug needs to be fixed
+
+[SP] Search photos need to diplay all photos first then filter out (update thumbnail display)
+[SP] Search button should be tested more
+[SP] Test Add Person field and button (throwing error?)
+[SP] Implement delete person/location spinners and test
+
+
+[SP] Add back to album button to edit photo view
+
+

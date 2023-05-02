@@ -4,16 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="20dp" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/displaysPhotoContDesc" />
 
     <Space
         android:layout_width="match_parent"
@@ -37,12 +50,18 @@
             android:layout_height="90dp"
             android:orientation="horizontal">
 
-            <AutoCompleteTextView
-                android:id="@+id/addLocationAutocomplete"
-                android:layout_width="550dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addLocationLayoutTextField"
+                android:layout_width="535dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/addLocationAutocompleteText" />
+                android:layout_weight="1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addLocationTextField"
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:hint="Enter a location" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/addLocationButton"
@@ -74,12 +93,18 @@
             android:layout_height="90dp"
             android:orientation="horizontal">
 
-            <AutoCompleteTextView
-                android:id="@+id/addPersonAutocomplete"
-                android:layout_width="550dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addPersonLayout"
+                android:layout_width="535dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/addPersonAutocompleteText" />
+                android:layout_weight="1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addPersonTextField"
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:hint="Add a person" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/addPersonButton"
@@ -165,4 +190,6 @@
 
     </LinearLayout>
 
+</LinearLayout>
+    </ScrollView>
 </LinearLayout>

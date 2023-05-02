@@ -13,6 +13,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ import goldfish.bowl.androidphotos52.model.Album;
 import goldfish.bowl.androidphotos52.model.DataManager;
 import goldfish.bowl.androidphotos52.model.ThumbnailAdapter;
 import goldfish.bowl.androidphotos52.utils.AndroidUtils;
+import androidx.fragment.app.FragmentManager;
 
 public class OpenAlbumView extends Fragment {
 
@@ -66,6 +68,7 @@ public class OpenAlbumView extends Fragment {
         binding.nextPhotoButton.setOnClickListener((view1 -> handleNextPhotoButtonClick(getContext())));
         binding.prevPhotoButton.setOnClickListener((view1 -> handlePrevPhotoButtonClick(getContext())));
         binding.movePhotoButton.setOnClickListener((view1 -> handleMovePhotoButtonClick(getContext())));
+        binding.editPhotoButton.setOnClickListener((view1 -> AndroidUtils.switchFragment(getContext(), R.id.main_fragment_container, new EditPhotoView())));
 //        binding.addTagButton.setOnClickListener((view1 -> handleAddTagButtonClick(getContext())));
 //        binding.deleteTagButton.setOnClickListener((view1 -> handleDeleteTagButtonClick(getContext())));
         List<Album> unopenedAlbums = new ArrayList<Album>(dmInstance.getAlbums());
@@ -106,37 +109,6 @@ public class OpenAlbumView extends Fragment {
     public void handleAddPhotoButtonClick(){
         photoPickerLauncher.launch("image/*");
     }
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.setTitle("Choose a Photo");
-//        fileChooser.getExtensionFilters().addAll(
-//                new FileChooser.ExtensionFilter("All Images", "*.bmp", "*.gif", "*.jpg", "*.jpeg", "*.png"),
-//                new FileChooser.ExtensionFilter("BMP", "*.bmp"),
-//                new FileChooser.ExtensionFilter("GIF", "*.gif"),
-//                new FileChooser.ExtensionFilter("JPEG", "*.jpg", "*.jpeg"),
-//                new FileChooser.ExtensionFilter("PNG", "*.png")
-//        );
-
-//        Stage stage = new Stage();
-//        File selectedFile = fileChooser.showOpenDialog(stage);
-
-//        if (selectedFile != null) {
-//            try {
-//                String selectedFileURI = selectedFile.toURI().toString();
-//
-//                if (dmInstance.hasPhoto(selectedFileURI)) {
-//                    AndroidUtils.showAlert(context,"Error: Photo already exists!", "The photo you selected already exists in the album.");
-//                    return;
-//                }
-//
-//                dmInstance.addPhotoToOpenedAlbum(context, selectedFileURI);
-//                updateDisplay();
-//            } catch (MalformedURLException e) {
-//                AndroidUtils.showAlert(context, "Error: Invalid File", e.getMessage());
-//            }
-//        } else {
-//            AndroidUtils.showAlert(context, "Error: Enter a file!", "You did not select a file that exists.");
-//        }
-//        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
 
 
     public void handleRemovePhotoButton(Context context){ //not tested

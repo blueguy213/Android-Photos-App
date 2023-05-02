@@ -22,6 +22,12 @@ public class SearchView extends Fragment {
     private DataManager dmInstance;
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        dmInstance = DataManager.getInstance(context);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = SearchViewBinding.inflate(inflater, container, false);
@@ -72,8 +78,9 @@ public class SearchView extends Fragment {
 
     public void handleTagSearchButtonClick(Context context) {
 
-        Boolean isFirstTag = ((!binding.firstKeySpinner.getSelectedItem().toString().isEmpty())&&(!binding.firstValAutoComp.getText().toString().isEmpty()));
-        Boolean isSecondTag = ((!binding.secondKeySpinner.getSelectedItem().toString().isEmpty())&&(!binding.secondValAutoComp.getText().toString().isEmpty()));
+        //Checks if there is a first and second tag
+        Boolean isFirstTag = ((!(binding.firstKeySpinner.getSelectedItem().toString().isEmpty()))&&(!(binding.firstValAutoComp.getText().toString().isEmpty())));
+        Boolean isSecondTag = ((!(binding.secondKeySpinner.getSelectedItem().toString().isEmpty()))&&(!(binding.secondValAutoComp.getText().toString().isEmpty())));
 
         String firstTagKey = null;
         String firstTagValue = null;

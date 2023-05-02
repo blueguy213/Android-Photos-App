@@ -5,12 +5,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import goldfish.bowl.androidphotos52.databinding.EditPhotoViewBinding;
+import goldfish.bowl.androidphotos52.model.Album;
 import goldfish.bowl.androidphotos52.model.DataManager;
+import goldfish.bowl.androidphotos52.utils.AndroidUtils;
 
 public class EditPhotoView extends Fragment {
 
@@ -29,11 +36,24 @@ public class EditPhotoView extends Fragment {
         binding = EditPhotoViewBinding.inflate(inflater, container, false);
         binding.addLocationButton.setOnClickListener(view1 -> handleAddLocationButton(getContext()));
         binding.addPersonButton.setOnClickListener((view1 -> handleAddPersonButton(getContext())));
+        dmInstance.displaySelectedPhotoOn(binding.imageView);
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+//        List<Album> tagValues = new ArrayList<Album>(dmInstance.readUsers(getContext()));
+//        unopenedAlbums.remove(dmInstance.getSelectedAlbumIndex());
+//        ArrayAdapter<Album> adapter = new ArrayAdapter<Album>(getContext(), android.R.layout.simple_spinner_item,unopenedAlbums);
+//        binding.destinationAlbumSpinner.setAdapter(adapter);
+//
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+//        AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.countries_list);
+//        textView.setAdapter(adapter);
+
+
 
     }
 
@@ -44,14 +64,35 @@ public class EditPhotoView extends Fragment {
     }
 
     public void handleAddLocationButton(Context context) {
-        //String value = binding.addLocationAutocomplete.get;
+        String value = Objects.requireNonNull(binding.addLocationTextField.getText()).toString();
+        // Check if the key and value are valid.
+        if (value.isEmpty()) {
+            AndroidUtils.showAlert(context, "Error: Invalid Tag", "You must enter value for the Location tag.");
+            return;
+        }
+
+        // Add the tag to the photo.
+        dmInstance.addTagToSelectedPhoto(context, "Location", value);
+       // dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
+
 
     }
 
     public void handleAddPersonButton(Context context) {
-        //String value = binding.addLocationAutocomplete.get;
-
+        String value = Objects.requireNonNull(binding.addLocationTextField.getText()).toString();
+        // Check if the key and value are valid.
+        if (value.isEmpty()) {
+            AndroidUtils.showAlert(context, "Error: Invalid Tag", "You must enter a value for the People tag.");
+            return;
+        }
     }
+//
+//        // Add the tag to the photo.
+//        dmInstance.addTagToSelectedPhoto(context, "People", value);
+//        // dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
+//
+//
+//    }
 //    public void handleAddTagButtonClick(Context context) {
 //        // Get the key and value from the text fields.
 //        String key = binding.addTagKeyBox.getSelectedItem().toString();
@@ -73,7 +114,7 @@ public class EditPhotoView extends Fragment {
 //        dmInstance.addTagToSelectedPhoto(context, key, value);
 //        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
 //    }
-//
+
 //
 //    public void handleDeleteTagButtonClick(Context context) {
 //        // Get the tag from the choice box.
@@ -93,3 +134,4 @@ public class EditPhotoView extends Fragment {
 
 
 }
+
