@@ -11,6 +11,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import androidx.core.widget.NestedScrollView;
 
@@ -428,9 +429,9 @@ public class DataManager {
 //     * Display the choices of unopened albums on the given ChoiceBox.
 //     * @param listView The ChoiceBox to display the unopened albums on.
 //     */
-//    public void displayUnopenedAlbumsOn(ChoiceBox<String> choiceBox) {
+//    public void displayUnopenedAlbumsOn(Spinner spinner) {
 //        // Clear the existing items in the ChoiceBox
-//        choiceBox.getItems().clear();
+//        spinner.getItems().clear();
 //
 //        // Loop through the albums of the current user
 //        for (Album album : getCurrentUserAlbums()) {
@@ -440,7 +441,7 @@ public class DataManager {
 //                choiceBox.getItems().add(album.getName());
 //            }
 //        }
-//
+
 //        // If there are any unopened albums, select the first one by default
 //        if (!choiceBox.getItems().isEmpty()) {
 //            choiceBox.getSelectionModel().select(0);
