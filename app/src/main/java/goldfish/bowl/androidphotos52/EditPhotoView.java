@@ -143,7 +143,7 @@ public class EditPhotoView extends Fragment {
 
     public void handleDeletePersonButtonClick(Context context) {
         // Get the tag from the choice box.
-        String tag = binding.deletePersonSpinner.getSelectedItem().toString();
+        String tag = "People: " + binding.deletePersonSpinner.getSelectedItem().toString();
         //System.out.println("Tag: " + tag);
 
         // Check if the key and value are valid.
