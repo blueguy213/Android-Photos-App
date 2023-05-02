@@ -10,15 +10,18 @@ import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import java.lang.reflect.Array;
+
 import goldfish.bowl.androidphotos52.databinding.OpenAlbumViewBinding;
 import goldfish.bowl.androidphotos52.databinding.SearchViewBinding;
 import goldfish.bowl.androidphotos52.model.DataManager;
+import goldfish.bowl.androidphotos52.model.ThumbnailAdapter;
 import goldfish.bowl.androidphotos52.utils.AndroidUtils;
 
 public class SearchView extends Fragment {
 
     private SearchViewBinding binding;
-
+    private ThumbnailAdapter searchResultsAdapter;
     private DataManager dmInstance;
 
     @Override
@@ -29,7 +32,6 @@ public class SearchView extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         binding = SearchViewBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
@@ -37,7 +39,7 @@ public class SearchView extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        searchResultsAdapter = new ThumbnailAdapter(requireContext(), dmInstance.getAllPhotos());
 //        binding.userOpenAlbumButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -46,7 +48,7 @@ public class SearchView extends Fragment {
 //            }
 //        });
 
-
+        updateDisplay(getContext());
         binding.nextPhotoButton.setOnClickListener((view1 -> handleNextPhotoButtonClick(getContext())));
         binding.prevPhotoButton.setOnClickListener((view1 -> handlePrevPhotoButtonClick(getContext())));
         binding.searchTagButton.setOnClickListener((view1 -> handleTagSearchButtonClick(getContext())));
@@ -61,7 +63,8 @@ public class SearchView extends Fragment {
 
     private void updateDisplay(Context context) {
         dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
-        //photoDisplayImageViewdmInstance.displayThumbnailsOn(binding.photoThumbScrollPane,context);
+        binding.thumbnailGridView.setAdapter(searchResultsAdapter);
+        //photoDisplayImageViewdmInstance.displayThumbnailsOn(binding.thumbnailGridView,context);
         // dmInstance.displayAllTagTypesOn(firstTagSpinner);
         //dmInstance.displayAllTagTypesOn(secondTagSpinner);
     }

@@ -13,7 +13,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,6 @@ import goldfish.bowl.androidphotos52.model.Album;
 import goldfish.bowl.androidphotos52.model.DataManager;
 import goldfish.bowl.androidphotos52.model.ThumbnailAdapter;
 import goldfish.bowl.androidphotos52.utils.AndroidUtils;
-import androidx.fragment.app.FragmentManager;
 
 public class OpenAlbumView extends Fragment {
 
@@ -69,8 +67,6 @@ public class OpenAlbumView extends Fragment {
         binding.prevPhotoButton.setOnClickListener((view1 -> handlePrevPhotoButtonClick(getContext())));
         binding.movePhotoButton.setOnClickListener((view1 -> handleMovePhotoButtonClick(getContext())));
         binding.editPhotoButton.setOnClickListener((view1 -> AndroidUtils.switchFragment(getContext(), R.id.main_fragment_container, new EditPhotoView())));
-//        binding.addTagButton.setOnClickListener((view1 -> handleAddTagButtonClick(getContext())));
-//        binding.deleteTagButton.setOnClickListener((view1 -> handleDeleteTagButtonClick(getContext())));
         List<Album> unopenedAlbums = new ArrayList<Album>(dmInstance.getAlbums());
         unopenedAlbums.remove(dmInstance.getSelectedAlbumIndex());
         ArrayAdapter<Album> adapter = new ArrayAdapter<Album>(getContext(), android.R.layout.simple_spinner_item,unopenedAlbums);
@@ -82,19 +78,6 @@ public class OpenAlbumView extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
-
-//    /**
-//     * Updates display on Album view
-//     */
-//    private void updateDisplay() {
-//        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
-//        //Why are these methods not available in data manager?
-//
-//        //dmInstance.displayUnopenedAlbumsOn(destinationAlbumSpinner);
-//        //dmInstance.displayDeletableTagsOn(selectTagToDeleteSpinner);
-//       // dmInstance.displayCreatableTagsOn(addTagKeyBox, addTagValueBox);
-//    }
 
 
     private void onPhotoPicked(Context context, Uri uri) {
@@ -137,50 +120,4 @@ public class OpenAlbumView extends Fragment {
         }
         updateDisplay();
     }
-//
-//    public void handleCopyPhotoButtonClick(Context context) {
-//        String destinationAlbumName = binding.destinationAlbumSpinner.getSelectedItem().toString();
-//        dmInstance.copySelectedPhotoToAlbum(context, destinationAlbumName);
-//    }
-
-
-//    public void handleAddTagButtonClick(Context context) {
-//        // Get the key and value from the text fields.
-//        String key = binding.addTagKeyBox.getSelectedItem().toString();
-//        String value = binding.addTagValueBox.getSelectedItem().toString();
-//
-//        // Check if the key and value are valid.
-//        if (key.isEmpty() || value.isEmpty()) {
-//            AndroidUtils.showAlert(context, "Error: Invalid Tag", "You must enter a key and value for the tag.");
-//            return;
-//        }
-//
-////        // Check if the tag should be unique
-////        if (isTagUnique.isSelected() && dmInstance.hasTagKey(key)) {
-////            JavaFXUtils.showAlert(context, "Error : Invalid Tag", "That tag is unique and already exists.");
-////            return;
-////        }
-//
-//        // Add the tag to the photo.
-//        dmInstance.addTagToSelectedPhoto(context, key, value);
-//        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
-//    }
-
-
-//    public void handleDeleteTagButtonClick(Context context) {
-//        // Get the tag from the choice box.
-//        String tag = binding.selectTagToDeleteSpinner.getSelectedItem().toString();
-//        //System.out.println("Tag: " + tag);
-//
-//        // Check if the key and value are valid.
-//        if (tag.isEmpty()) {
-//            AndroidUtils.showAlert(context, "Error: No Tag Selected", "You must select a tag to delete.");
-//            return;
-//        }
-//        // Delete the tag from the photo.
-//        dmInstance.deleteTagFromSelectedPhoto(context,tag);
-//        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
-//    }
-
-
 }
