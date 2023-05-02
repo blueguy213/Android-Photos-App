@@ -115,9 +115,9 @@ public class User implements Serializable {
      * @param value the tag value to add
      */
     public void addTag(String key, String value) {
-        if (key.equals("location")) {
+        if (key.equals("Location")) {
             location_tags.add(value);
-        } else if (key.equals("person")) {
+        } else if (key.equals("People")) {
             people_tags.add(value);
         }
     }

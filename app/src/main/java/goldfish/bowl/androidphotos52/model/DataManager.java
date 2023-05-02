@@ -422,7 +422,6 @@ public class DataManager {
              // Write the users to the database.
             writeUser(context);
         }
-       
     }
 
 //    /**
