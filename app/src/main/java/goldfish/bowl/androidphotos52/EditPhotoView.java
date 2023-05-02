@@ -27,6 +27,8 @@ public class EditPhotoView extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = EditPhotoViewBinding.inflate(inflater, container, false);
+        binding.addLocationButton.setOnClickListener(view1 -> handleAddLocationButton(getContext()));
+        binding.addPersonButton.setOnClickListener((view1 -> handleAddPersonButton(getContext())));
         return binding.getRoot();
     }
 
@@ -40,11 +42,20 @@ public class EditPhotoView extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-//
+
+    public void handleAddLocationButton(Context context) {
+        //String value = binding.addLocationAutocomplete.get;
+
+    }
+
+    public void handleAddPersonButton(Context context) {
+        //String value = binding.addLocationAutocomplete.get;
+
+    }
 //    public void handleAddTagButtonClick(Context context) {
 //        // Get the key and value from the text fields.
 //        String key = binding.addTagKeyBox.getSelectedItem().toString();
-//        String value = binding.addTagValueBox.getSelectedItem().toString();
+//        String value = binding.addLocationAutocomplete.getSelectedItem().toString();
 //
 //        // Check if the key and value are valid.
 //        if (key.isEmpty() || value.isEmpty()) {
@@ -79,6 +90,6 @@ public class EditPhotoView extends Fragment {
 //        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
 //    }
 //
-//
+
 
 }
