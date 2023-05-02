@@ -90,6 +90,16 @@ public class Tags implements Serializable {
      * Checks if the list of tags contains the given tag.
      */
     public boolean contains(String key, String value) {
-        return ((key.equals("Location") && value.equals(location_tag)) || (key.equals("People") && person_tags.contains(value)));
+        boolean result = false;
+        if (key.equals("Location")) {
+            result = location_tag.equalsIgnoreCase(value);
+        } else {
+            for (String tag : person_tags) {
+                if (tag.equalsIgnoreCase(value)) {
+                    result = true;
+                }
+            }
+        }
+        return result;
     }
 }

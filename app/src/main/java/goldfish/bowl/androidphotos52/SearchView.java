@@ -60,6 +60,16 @@ public class SearchView extends Fragment {
     private void updateDisplay(Context context) {
         dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
         binding.thumbnailGridView.setAdapter(searchResultsAdapter);
+        if (binding.firstKeySpinner.getSelectedItem().toString().equals("Location")) {
+            binding.firstValAutoComp.setAdapter(locationAdapter);
+        } else if (binding.firstKeySpinner.getSelectedItem().toString().equals("Person")) {
+            binding.firstValAutoComp.setAdapter(peopleAdapter);
+        }
+        if (binding.secondKeySpinner.getSelectedItem().toString().equals("Location")) {
+            binding.secondValAutoComp.setAdapter(locationAdapter);
+        } else if (binding.secondKeySpinner.getSelectedItem().toString().equals("Person")) {
+            binding.secondValAutoComp.setAdapter(peopleAdapter);
+        }
         //photoDisplayImageViewdmInstance.displayThumbnailsOn(binding.thumbnailGridView,context);
         // dmInstance.displayAllTagTypesOn(firstTagSpinner);
         //dmInstance.displayAllTagTypesOn(secondTagSpinner);
