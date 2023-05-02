@@ -16,174 +16,188 @@
             android:orientation="vertical">
 
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@string/displaysPhotoContDesc"
+                tools:srcCompat="@tools:sample/avatars" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="@string/displaysPhotoContDesc" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/addLocationText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/addLocationTagLabel"
-            android:textSize="8pt" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/addLocationLayoutTextField"
-                android:layout_width="535dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/addLocationTextField"
-                    android:layout_width="260dp"
+                <TextView
+                    android:id="@+id/tagsTitleText"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:hint="Enter a location" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:text="Tags:"
+                    android:textSize="9pt" />
 
-            <Button
-                android:id="@+id/addLocationButton"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/addLocationButtonText" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/addPersonText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/addPersonTagLabel"
-            android:textSize="8pt" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/addPersonLayout"
-                android:layout_width="535dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/addPersonTextField"
-                    android:layout_width="260dp"
+                <TextView
+                    android:id="@+id/tagsDisplayText"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:hint="Enter a person" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_weight="1" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/addPersonButton"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/addPersonButtonText" />
+                android:layout_height="120dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/addLocationText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/addLocationTagLabel"
+                    android:textSize="8pt" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/addLocationLayoutTextField"
+                        android:layout_width="535dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/addLocationTextField"
+                            android:layout_width="260dp"
+                            android:layout_height="match_parent"
+                            android:hint="Enter a location" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/addLocationButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/addLocationButtonText" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/addPersonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/addPersonTagLabel"
+                    android:textSize="8pt" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/addPersonLayout"
+                        android:layout_width="535dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/addPersonTextField"
+                            android:layout_width="260dp"
+                            android:layout_height="match_parent"
+                            android:hint="Enter a person" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/addPersonButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/addPersonButtonText" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/deleteLocationText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/deleteLocationTagLabel"
+                    android:textSize="8pt" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/deleteLocationButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/deleteLocationButtonText" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/deletePersonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/deletePersonTagLabel"
+                    android:textSize="8pt" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/deletePersonSpinner"
+                        android:layout_width="550dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/deletePersonButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/deletePersonButtonText" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/deleteLocationText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/deleteLocationTagLabel"
-            android:textSize="8pt" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/deleteLocationButton"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/deleteLocationButtonText" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/deletePersonText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/deletePersonTagLabel"
-            android:textSize="8pt" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/deletePersonSpinner"
-                android:layout_width="550dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/deletePersonButton"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/deletePersonButtonText" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
     </ScrollView>
 </LinearLayout>

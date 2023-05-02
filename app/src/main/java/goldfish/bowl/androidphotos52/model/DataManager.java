@@ -83,7 +83,7 @@ public class DataManager {
      */
     public void readUsers(Context context) {
         try {
-            File usersFile = new File(context.getFilesDir(), "user_data");
+            File usersFile = new File(context.getFilesDir(), "user_data1");
             if (!usersFile.exists()) {
                 usersFile.getParentFile().mkdirs();
                 usersFile.createNewFile();
@@ -104,7 +104,7 @@ public class DataManager {
             ois.close();
         } catch (IOException | ClassNotFoundException e) {
             // Delete the file if it is corrupted.
-            File usersFile = new File(context.getFilesDir(), "user_data");
+            File usersFile = new File(context.getFilesDir(), "user_data1");
             usersFile.delete();
             AndroidUtils.showAlert(context, "Invalid File Deleted", e.getMessage());
         }
@@ -118,7 +118,7 @@ public class DataManager {
      * @see java.io.File
      */
     public void writeUser(Context context) {
-        File usersFile = new File(context.getFilesDir(), "user_data");
+        File usersFile = new File(context.getFilesDir(), "user_data1");
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(usersFile))) { 
             oos.writeObject(user);
             oos.flush();

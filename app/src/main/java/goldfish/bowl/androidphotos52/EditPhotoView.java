@@ -17,6 +17,7 @@ import java.util.Objects;
 import goldfish.bowl.androidphotos52.databinding.EditPhotoViewBinding;
 import goldfish.bowl.androidphotos52.model.Album;
 import goldfish.bowl.androidphotos52.model.DataManager;
+import goldfish.bowl.androidphotos52.model.Tags;
 import goldfish.bowl.androidphotos52.utils.AndroidUtils;
 
 public class EditPhotoView extends Fragment {
@@ -36,6 +37,10 @@ public class EditPhotoView extends Fragment {
         binding = EditPhotoViewBinding.inflate(inflater, container, false);
         binding.addLocationButton.setOnClickListener(view1 -> handleAddLocationButton(getContext()));
         binding.addPersonButton.setOnClickListener((view1 -> handleAddPersonButton(getContext())));
+
+//        List<String> peopleTags = dmInstance.getPeopleTags();
+
+        binding.tagsDisplayText.setText(dmInstance.getPeopleTags().toString());
         dmInstance.displaySelectedPhotoOn(binding.imageView);
         return binding.getRoot();
     }
@@ -43,17 +48,15 @@ public class EditPhotoView extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        List<Album> tagValues = new ArrayList<Album>(dmInstance.readUsers(getContext()));
-//        unopenedAlbums.remove(dmInstance.getSelectedAlbumIndex());
-//        ArrayAdapter<Album> adapter = new ArrayAdapter<Album>(getContext(), android.R.layout.simple_spinner_item,unopenedAlbums);
-//        binding.destinationAlbumSpinner.setAdapter(adapter);
-//
+
+//        List<String> tagValues = dmInstance.getPeopleTags();
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,tagValues);
+//        binding.deletePersonSpinner.setAdapter(adapter);
+
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 //                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
 //        AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.countries_list);
 //        textView.setAdapter(adapter);
-
-
 
     }
 
@@ -63,6 +66,7 @@ public class EditPhotoView extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
 
 
     public void handleAddLocationButton(Context context) {
@@ -76,7 +80,6 @@ public class EditPhotoView extends Fragment {
         // Add the tag to the photo.
         dmInstance.addTagToSelectedPhoto(context, "Location", value);
        // dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
-
 
     }
 
