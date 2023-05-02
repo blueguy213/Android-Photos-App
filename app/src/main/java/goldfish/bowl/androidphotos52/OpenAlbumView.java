@@ -14,6 +14,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import goldfish.bowl.androidphotos52.databinding.OpenAlbumViewBinding;
 import goldfish.bowl.androidphotos52.model.Album;
 import goldfish.bowl.androidphotos52.model.DataManager;
@@ -65,8 +68,9 @@ public class OpenAlbumView extends Fragment {
         binding.movePhotoButton.setOnClickListener((view1 -> handleMovePhotoButtonClick(getContext())));
 //        binding.addTagButton.setOnClickListener((view1 -> handleAddTagButtonClick(getContext())));
 //        binding.deleteTagButton.setOnClickListener((view1 -> handleDeleteTagButtonClick(getContext())));
-
-        ArrayAdapter<Album> adapter = new ArrayAdapter<Album>(getContext(), android.R.layout.simple_spinner_item,dmInstance.getAlbums());
+        List<Album> unopenedAlbums = new ArrayList<Album>(dmInstance.getAlbums());
+        unopenedAlbums.remove(dmInstance.getSelectedAlbumIndex());
+        ArrayAdapter<Album> adapter = new ArrayAdapter<Album>(getContext(), android.R.layout.simple_spinner_item,unopenedAlbums);
         binding.destinationAlbumSpinner.setAdapter(adapter);
     }
 
