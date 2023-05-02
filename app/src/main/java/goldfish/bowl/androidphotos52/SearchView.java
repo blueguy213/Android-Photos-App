@@ -58,6 +58,7 @@ public class SearchView extends Fragment {
     }
 
     private void updateDisplay(Context context) {
+        searchResultsAdapter = new ThumbnailAdapter(requireContext(), dmInstance.searchResults);
         dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
         binding.thumbnailGridView.setAdapter(searchResultsAdapter);
         if (binding.firstKeySpinner.getSelectedItem().toString().equals("Location")) {

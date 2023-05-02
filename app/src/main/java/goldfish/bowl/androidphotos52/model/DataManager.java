@@ -539,7 +539,7 @@ public class DataManager {
 
         searchResults = searchResults.stream()
             .filter(photo -> photo.getTags().getPairs().stream()
-                .anyMatch(tag -> tag.getKey().equals(key) && tag.getValue().equals(value)))
+                .anyMatch(tag -> tag.getKey().equalsIgnoreCase(key) && tag.getValue().equalsIgnoreCase(value)))
             .collect(Collectors.toList());
         selectedPhotoIndex = 0;
     }
@@ -558,9 +558,9 @@ public class DataManager {
 
         searchResults = searchResults.stream()
             .filter(photo -> photo.getTags().getPairs().stream()
-                .anyMatch(tag -> tag.getKey().equals(key1) && tag.getValue().equals(value1)))
+                .anyMatch(tag -> tag.getKey().equalsIgnoreCase(key1) && tag.getValue().equalsIgnoreCase(value1)))
             .filter(photo -> photo.getTags().getPairs().stream()
-                .anyMatch(tag -> tag.getKey().equals(key2) && tag.getValue().equals(value2)))
+                .anyMatch(tag -> tag.getKey().equalsIgnoreCase(key2) && tag.getValue().equalsIgnoreCase(value2)))
             .collect(Collectors.toList());
         selectedPhotoIndex = 0;
     }
@@ -578,7 +578,7 @@ public class DataManager {
 
         searchResults = searchResults.stream()
             .filter(photo -> photo.getTags().getPairs().stream()
-                .anyMatch((tag -> tag.getKey().equals(key1) && tag.getValue().equals(value1) || (tag.getKey().equals(key2) && tag.getValue().equals(value2)))))
+                .anyMatch((tag -> tag.getKey().equalsIgnoreCase(key1) && tag.getValue().equalsIgnoreCase(value1) || (tag.getKey().equalsIgnoreCase(key2) && tag.getValue().equalsIgnoreCase(value2)))))
             .collect(Collectors.toList());
         selectedPhotoIndex = 0;
     }
