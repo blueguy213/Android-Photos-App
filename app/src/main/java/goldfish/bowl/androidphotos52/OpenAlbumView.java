@@ -60,6 +60,8 @@ public class OpenAlbumView extends Fragment {
 //        binding.addTagButton.setOnClickListener((view1 -> handleAddTagButtonClick(getContext())));
 //        binding.deleteTagButton.setOnClickListener((view1 -> handleDeleteTagButtonClick(getContext())));
 
+        ArrayAdapter<Album> adapter = new ArrayAdapter<Album>(getContext(), android.R.layout.simple_spinner_item,dmInstance.getAlbums());
+        binding.destinationAlbumSpinner.setAdapter(adapter);
     }
 
     @Override

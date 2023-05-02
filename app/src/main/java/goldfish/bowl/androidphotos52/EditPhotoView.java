@@ -40,5 +40,45 @@ public class EditPhotoView extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+//
+//    public void handleAddTagButtonClick(Context context) {
+//        // Get the key and value from the text fields.
+//        String key = binding.addTagKeyBox.getSelectedItem().toString();
+//        String value = binding.addTagValueBox.getSelectedItem().toString();
+//
+//        // Check if the key and value are valid.
+//        if (key.isEmpty() || value.isEmpty()) {
+//            AndroidUtils.showAlert(context, "Error: Invalid Tag", "You must enter a key and value for the tag.");
+//            return;
+//        }
+//
+////        // Check if the tag should be unique
+////        if (isTagUnique.isSelected() && dmInstance.hasTagKey(key)) {
+////            JavaFXUtils.showAlert(context, "Error : Invalid Tag", "That tag is unique and already exists.");
+////            return;
+////        }
+//
+//        // Add the tag to the photo.
+//        dmInstance.addTagToSelectedPhoto(context, key, value);
+//        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
+//    }
+//
+//
+//    public void handleDeleteTagButtonClick(Context context) {
+//        // Get the tag from the choice box.
+//        String tag = binding.selectTagToDeleteSpinner.getSelectedItem().toString();
+//        //System.out.println("Tag: " + tag);
+//
+//        // Check if the key and value are valid.
+//        if (tag.isEmpty()) {
+//            AndroidUtils.showAlert(context, "Error: No Tag Selected", "You must select a tag to delete.");
+//            return;
+//        }
+//        // Delete the tag from the photo.
+//        dmInstance.deleteTagFromSelectedPhoto(context,tag);
+//        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
+//    }
+//
+//
 
 }
