@@ -56,6 +56,7 @@ public class EditPhotoView extends Fragment {
         binding.addLocationButton.setOnClickListener(view1 -> handleAddLocationButton(getContext()));
         binding.addPersonButton.setOnClickListener((view1 -> handleAddPersonButton(getContext())));
         binding.deleteLocationButton.setOnClickListener((view1 -> handleDeleteLocationButtonClick(getContext())));
+        binding.deletePersonButton.setOnClickListener((view1 -> handleDeletePersonButtonClick(getContext())));
         deletePeopleTagAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, dmInstance.getOpenedAlbumPhotos().get(dmInstance.getSelectedPhotoIndex()).getPeopleTags());
         dmInstance.displaySelectedPhotoOn(binding.imageView);
         updateDisplay();
@@ -140,7 +141,7 @@ public class EditPhotoView extends Fragment {
         updateDisplay();
     }
 
-    public void deletePersonButtonClick(Context context) {
+    public void handleDeletePersonButtonClick(Context context) {
         // Get the tag from the choice box.
         String tag = binding.deletePersonSpinner.getSelectedItem().toString();
         //System.out.println("Tag: " + tag);
