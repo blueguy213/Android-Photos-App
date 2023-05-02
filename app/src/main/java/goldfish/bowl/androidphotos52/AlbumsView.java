@@ -40,8 +40,7 @@ public class AlbumsView extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         albumListAdapter = new ArrayAdapter<Album>(requireContext(), android.R.layout.simple_list_item_1, dmInstance.getAlbums());
-        binding.albumsListView.setAdapter(albumListAdapter);
-        dmInstance.displayAlbumsOn(requireContext(), binding.albumsListView, albumListAdapter);
+        binding.albumsListView.setAdapter((ListAdapter) albumListAdapter);
         binding.albumsListView.setOnItemClickListener((parent, view1, position, id) -> onAlbumSelected(position));;
         binding.userCreateAlbumButton.setOnClickListener(view1 -> createAlbumButtonCallback());
         binding.userDeleteAlbumButton.setOnClickListener(view1 -> deleteAlbumButtonCallback());
@@ -64,7 +63,7 @@ public class AlbumsView extends Fragment {
 
     private void createAlbumButtonCallback() {
         dmInstance.addAlbum(getContext(), Objects.requireNonNull(binding.userCreateAlbumField.getText()).toString());
-        dmInstance.displayAlbumsOn(getContext(), binding.albumsListView, albumListAdapter);
+        binding.albumsListView.setAdapter((ListAdapter) albumListAdapter);
     }
 
     private void deleteAlbumButtonCallback() {
@@ -73,7 +72,7 @@ public class AlbumsView extends Fragment {
             // Get the album name using the selected album index
             Album album = (Album) albumListAdapter.getItem(selectedAlbumIndex);
             dmInstance.removeAlbum(getContext(), album.getName());
-            dmInstance.displayAlbumsOn(getContext(), binding.albumsListView, albumListAdapter);
+            binding.albumsListView.setAdapter((ListAdapter) albumListAdapter);
         } else {
             AndroidUtils.showAlert(getContext(), "No album selected", "Please select an album to delete");
         }
@@ -96,7 +95,7 @@ public class AlbumsView extends Fragment {
         if (selectedAlbumIndex != -1) {
             Album album = (Album) albumListAdapter.getItem(selectedAlbumIndex);
             dmInstance.renameAlbum(getContext(), album.getName(), Objects.requireNonNull(binding.userRenameAlbumField.getText()).toString());
-            dmInstance.displayAlbumsOn(getContext(), binding.albumsListView, albumListAdapter);
+            binding.albumsListView.setAdapter((ListAdapter) albumListAdapter);
         } else {
             AndroidUtils.showAlert(getContext(), "No album selected", "Please select an album to rename");
         }

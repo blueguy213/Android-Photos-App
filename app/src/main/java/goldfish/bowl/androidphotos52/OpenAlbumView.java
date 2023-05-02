@@ -26,6 +26,8 @@ public class OpenAlbumView extends Fragment {
 
     private DataManager dmInstance;
 
+    private ThumbnailAdapter thumbnailAdapter;
+
     private final ActivityResultLauncher<String> photoPickerLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(), (ActivityResultCallback<Uri>) uri -> onPhotoPicked(getContext(), uri));
 
     @Override
@@ -45,12 +47,16 @@ public class OpenAlbumView extends Fragment {
 
     }
 
+    public void updateDiplay() {
+        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
+        binding.photoThumbnailGridView.setAdapter(thumbnailAdapter);
+    }
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ThumbnailAdapter thumbnailAdapter = new ThumbnailAdapter(requireContext(), dmInstance.getAlbums().get(dmInstance.getSelectedAlbumIndex()).getPhotos());
-        binding.photoThumbnailGridView.setAdapter(thumbnailAdapter);
-
+        thumbnailAdapter = new ThumbnailAdapter(requireContext(), dmInstance.getAlbums().get(dmInstance.getSelectedAlbumIndex()).getPhotos());
+        updateDiplay();
         binding.openAlbumNameText.setText(dmInstance.getOpenedAlbumName());
         binding.addPhotoButton.setOnClickListener((view1 -> handleAddPhotoButtonClick()));
         binding.removePhotoButton.setOnClickListener(view1 -> handleRemovePhotoButton(getContext()));
@@ -85,10 +91,10 @@ public class OpenAlbumView extends Fragment {
     private void onPhotoPicked(Context context, Uri uri) {
         if (uri != null) {
             dmInstance.addPhotoToOpenedAlbum(context, uri);
-            dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
         } else {
             AndroidUtils.showAlert(getContext(),"Error: Photo not selected!", "You did not select a photo.");
         }
+        updateDiplay();
     }
 
     public void handleAddPhotoButtonClick(){
@@ -129,17 +135,17 @@ public class OpenAlbumView extends Fragment {
 
     public void handleRemovePhotoButton(Context context){ //not tested
         dmInstance.removeSelectedPhoto(context);
-        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
+        updateDiplay();
     }
 
     public void handleNextPhotoButtonClick(Context context) {
         dmInstance.nextPhoto();
-        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
+        updateDiplay();
     }
 
     public void handlePrevPhotoButtonClick(Context context) {
         dmInstance.previousPhoto();
-        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
+        updateDiplay();
     }
 
     public void handleMovePhotoButtonClick(Context context) {
@@ -151,7 +157,7 @@ public class OpenAlbumView extends Fragment {
         if (dmInstance.copySelectedPhotoToAlbum(context, destinationAlbum.toString()) > -1) {
             dmInstance.removeSelectedPhoto(context);
         }
-        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
+        updateDiplay();
     }
 //
 //    public void handleCopyPhotoButtonClick(Context context) {

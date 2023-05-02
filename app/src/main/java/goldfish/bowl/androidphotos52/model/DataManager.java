@@ -123,6 +123,7 @@ public class DataManager {
         } catch (IOException e) {
             AndroidUtils.showAlert(context, "Invalid File", "IOException");
         }
+
     }
 
     /**
@@ -139,18 +140,6 @@ public class DataManager {
      */
     public List<Photo> getAllPhotos() {
         return new ArrayList<Photo>(user.getPhotos());
-    }
-
-    /**
-     * Updates the given ListView with all the albums for the user that is currently logged in.
-     * @param context The context of the ListView.
-     * @param listView The ListView to update.
-     *
-     * @see android.widget.ListView
-     * @see android.content.Context
-     */
-    public void displayAlbumsOn(Context context, ListView listView, Adapter adapter) {
-        listView.setAdapter((ListAdapter) adapter);
     }
 
     /**
@@ -254,7 +243,7 @@ public class DataManager {
      */
     public void addPhotoToOpenedAlbum(Context context, Uri path) {
         // Create the photo.
-        Photo photo = new Photo(path);
+        Photo photo = new Photo(path.toString());
         // Check if the photo is already in the album.
         for (Photo p : openedAlbum.getPhotos()) {
             if (p.equals(photo)) {

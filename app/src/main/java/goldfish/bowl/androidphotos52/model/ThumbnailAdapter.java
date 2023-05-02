@@ -52,7 +52,7 @@ public class ThumbnailAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        Uri imageUri = photos.get(position).getPath();
+        Uri imageUri = Uri.parse(photos.get(position).getPath());
         ContentResolver contentResolver = context.getContentResolver();
         Bitmap thumbnail = null;
         try {

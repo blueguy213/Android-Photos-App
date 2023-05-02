@@ -14,14 +14,14 @@ import java.io.Serializable;
 public class Photo implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Uri path;
+    private String path;
     private Tags tags;
 
     /**
      * Creates a new photo with the given path, caption, and date and time.
      * @param path the path of the photo
      */
-    public Photo(Uri path) {
+    public Photo(String path) {
         this.path = path;
         this.tags = new Tags();
     }
@@ -30,7 +30,7 @@ public class Photo implements Serializable {
      * Returns the path of the photo.
      * @return the path of the photo
      */
-    public Uri getPath() {
+    public String getPath() {
         return path;
     }
 
@@ -66,6 +66,6 @@ public class Photo implements Serializable {
      * @param imageView the JavaFX ImageView to display the photo in
      */
     public void displayOn(ImageView imageView) {
-        imageView.setImageURI(path);
+        imageView.setImageURI(Uri.parse(path));
     }
 }
