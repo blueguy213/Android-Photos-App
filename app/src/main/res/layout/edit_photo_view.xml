@@ -103,7 +103,7 @@
                     android:id="@+id/addPersonTextField"
                     android:layout_width="260dp"
                     android:layout_height="match_parent"
-                    android:hint="Add a person" />
+                    android:hint="Enter a person" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -138,12 +138,6 @@
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:orientation="horizontal">
-
-            <Spinner
-                android:id="@+id/deleteLocationSpinner"
-                android:layout_width="550dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/deleteLocationButton"

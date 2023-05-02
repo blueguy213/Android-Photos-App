@@ -57,11 +57,13 @@ public class EditPhotoView extends Fragment {
 
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
+
 
     public void handleAddLocationButton(Context context) {
         String value = Objects.requireNonNull(binding.addLocationTextField.getText()).toString();
@@ -79,12 +81,13 @@ public class EditPhotoView extends Fragment {
     }
 
     public void handleAddPersonButton(Context context) {
-        String value = Objects.requireNonNull(binding.addLocationTextField.getText()).toString();
+        String value = Objects.requireNonNull(binding.addPersonTextField.getText()).toString();
         // Check if the key and value are valid.
         if (value.isEmpty()) {
             AndroidUtils.showAlert(context, "Error: Invalid Tag", "You must enter a value for the People tag.");
             return;
         }
+        dmInstance.addTagToSelectedPhoto(context, "People", value);
     }
 //
 //        // Add the tag to the photo.
@@ -116,6 +119,27 @@ public class EditPhotoView extends Fragment {
 //    }
 
 //
+
+    public void deleteLocationButtonClick(Context context) {
+
+        dmInstance.deleteTagFromSelectedPhoto(context,"location: x");
+    }
+
+    public void deletePersonButtonClick(Context context) {
+        // Get the tag from the choice box.
+        String tag = binding.deletePersonSpinner.getSelectedItem().toString();
+        //System.out.println("Tag: " + tag);
+
+        // Check if the key and value are valid.
+        if (tag.isEmpty()) {
+            AndroidUtils.showAlert(context, "Error: No Tag Selected", "You must select a tag to delete.");
+            return;
+        }
+        // Delete the tag from the photo.
+        dmInstance.deleteTagFromSelectedPhoto(context,tag);
+        dmInstance.displaySelectedPhotoOn(binding.imageView);
+    }
+
 //    public void handleDeleteTagButtonClick(Context context) {
 //        // Get the tag from the choice box.
 //        String tag = binding.selectTagToDeleteSpinner.getSelectedItem().toString();
@@ -130,7 +154,7 @@ public class EditPhotoView extends Fragment {
 //        dmInstance.deleteTagFromSelectedPhoto(context,tag);
 //        dmInstance.displaySelectedPhotoOn(binding.photoDisplayImageView);
 //    }
-//
+
 
 
 }
