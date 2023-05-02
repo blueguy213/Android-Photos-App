@@ -57,4 +57,12 @@
     <string name="addPersonButtonText">Add Person</string>
     <string name="deleteLocationButtonText">Delete Location</string>
     <string name="deletePersonButtonText">Delete Person</string>
+    <string-array name="keySpinnerEntries">
+        <item>Location</item>
+        <item>People</item>
+    </string-array>
+    <string-array name="andOrSpinnerEntries">
+        <item>AND</item>
+        <item>OR</item>
+    </string-array>
 </resources>

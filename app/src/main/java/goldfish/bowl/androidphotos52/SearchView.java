@@ -72,22 +72,22 @@ public class SearchView extends Fragment {
 
     public void handleTagSearchButtonClick(Context context) {
 
-        String firstTag = binding.firstTagSpinner.getText().toString();
-        String secondTag = binding.secondTagSpinner.getText().toString();
+        Boolean isFirstTag = ((!binding.firstKeySpinner.getSelectedItem().toString().isEmpty())&&(!binding.firstValAutoComp.getText().toString().isEmpty()));
+        Boolean isSecondTag = ((!binding.secondKeySpinner.getSelectedItem().toString().isEmpty())&&(!binding.secondValAutoComp.getText().toString().isEmpty()));
 
         String firstTagKey = null;
         String firstTagValue = null;
         String secondTagKey = null;
         String secondTagValue = null;
 
-        if (firstTag.isEmpty()) {
-            firstTagKey = firstTag.split(": ")[0];
-            firstTagValue = firstTag.split(": ")[1];
+        if (isFirstTag) {
+            firstTagKey = binding.firstKeySpinner.getSelectedItem().toString();
+            firstTagValue = binding.firstValAutoComp.getText().toString();
         }
 
-        if (secondTag.isEmpty()) {
-            secondTagKey = secondTag.split(": ")[0];
-            secondTagValue = secondTag.split(": ")[1];
+        if (isSecondTag) {
+            secondTagKey =  binding.secondKeySpinner.getSelectedItem().toString();
+            secondTagValue = binding.secondValAutoComp.getText().toString();
         }
 
         String andOr = binding.andOrSpinner.getSelectedItem().toString();
