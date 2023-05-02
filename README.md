@@ -12,13 +12,17 @@
 
 [SK] Auto Complete Text view for SearchView Tags
 [SK] Photo permission bug needs to be fixed
+[SK] Search photos need to display all photos first then filter out (update thumbnail display)
+[SK] Make tags case insensitive
 
-[SP] Search photos need to diplay all photos first then filter out (update thumbnail display)
 [SP] Search button should be tested more
 [SP] Test Add Person field and button (throwing error?)
-[SP] Implement delete person/location spinners and test
+[SP] Implement delete person button and location spinners and test
+[SP] Search view search by tag gets cut off
 
 
+
+[] Error for edit photo button if not photos in album
 [SP] Add back to album button to edit photo view
 
 
