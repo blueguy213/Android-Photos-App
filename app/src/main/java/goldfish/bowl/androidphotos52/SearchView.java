@@ -108,7 +108,7 @@ public class SearchView extends Fragment {
         } else if (andOr.equals("OR")) {
             dmInstance.filterSearchResultsByTwoTagsOr(firstTagKey, firstTagValue, secondTagKey, secondTagValue);
         } else {
-            AndroidUtils.showAlert(context, "Error: Invalid AND/OR selection", "Fix needed :/");
+            AndroidUtils.showAlert(context, "Error: Invalid selection", "Fix needed :/");
             return;
         }
 

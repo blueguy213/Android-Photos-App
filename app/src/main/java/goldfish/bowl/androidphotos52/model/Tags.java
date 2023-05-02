@@ -36,9 +36,9 @@ public class Tags implements Serializable {
     public String toString() {
         String result = "";
         for (String tag : person_tags) {
-            result += "person: " + tag + ", ";
+            result += "People: " + tag + ", ";
         }
-        result += "location: " + location_tag;
+        result += "Location: " + location_tag;
         return result;
     }
 
@@ -49,9 +49,9 @@ public class Tags implements Serializable {
     public List<SimpleImmutableEntry<String, String>> getPairs() {
         ArrayList<SimpleImmutableEntry<String, String>> result = new ArrayList<SimpleImmutableEntry<String, String>>();
         for (String tag : person_tags) {
-            result.add(new SimpleImmutableEntry<String, String>("person", tag));
+            result.add(new SimpleImmutableEntry<String, String>("People", tag));
         }
-        result.add(new SimpleImmutableEntry<String, String>("location", location_tag));
+        result.add(new SimpleImmutableEntry<String, String>("Location", location_tag));
         return (result);
     }
 
@@ -62,7 +62,7 @@ public class Tags implements Serializable {
      * @param value the value of the tag
      */
     public void add(String key, String value) {
-        if (key.equals("location")) {
+        if (key.equals("Location")) {
             location_tag = value;
         } else {
             person_tags.add(value);
@@ -75,7 +75,7 @@ public class Tags implements Serializable {
      * @param value the value of the tag
      */
     public void remove(String key, String value) {
-        if (key.equals("location")) {
+        if (key.equals("Location")) {
             location_tag = "";
         } else {
             person_tags.remove(value);
@@ -86,6 +86,6 @@ public class Tags implements Serializable {
      * Checks if the list of tags contains the given tag.
      */
     public boolean contains(String key, String value) {
-        return ((key.equals("location") && value.equals(location_tag)) || (key.equals("person") && person_tags.contains(value)));
+        return ((key.equals("Location") && value.equals(location_tag)) || (key.equals("People") && person_tags.contains(value)));
     }
 }
