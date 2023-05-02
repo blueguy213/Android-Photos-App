@@ -22,6 +22,7 @@ import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.File;
 
+import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -424,53 +425,21 @@ public class DataManager {
         }
     }
 
-//    /**
-//     * Display the choices of unopened albums on the given ChoiceBox.
-//     * @param listView The ChoiceBox to display the unopened albums on.
-//     */
-//    public void displayUnopenedAlbumsOn(Spinner spinner) {
-//        // Clear the existing items in the ChoiceBox
-//        spinner.getItems().clear();
-//
-//        // Loop through the albums of the current user
-//        for (Album album : getCurrentUserAlbums()) {
-//            // Check if the album is not currently opened
-//            if (!album.equals(openedAlbum)) {
-//                // Add the unopened album to the ChoiceBox items
-//                choiceBox.getItems().add(album.getName());
-//            }
-//        }
+    /**
+     * Get the location tags of the user.
+     * @return The location tags of the user.
+     */
+    public List<String> getLocationTags() {
+        return new ArrayList<>(user.getLocationTags());
+    }
 
-//        // If there are any unopened albums, select the first one by default
-//        if (!choiceBox.getItems().isEmpty()) {
-//            choiceBox.getSelectionModel().select(0);
-//        }
-//    }
-
-//    /**
-//     * Display the deletable choices of tags on the given ChoiceBox.
-//     * @param choiceBox The ChoiceBox to display the tags on.
-//     */
-//    public void displayDeletableTagsOn(ChoiceBox<String> choiceBox) {
-//
-//        // Return without adding choices if there are no photos in the album.
-//        if (openedAlbum.getPhotos().isEmpty()) {
-//            return;
-//        }
-//        // Clear the existing items in the ChoiceBox
-//        choiceBox.getItems().clear();
-//
-//        // Loop through the tags of the current user
-//        for (Pair<String, Pair<Boolean, String>> tag : openedAlbum.getPhotoAtIndex(selectedPhotoIndex).getTags().getPairs()) {
-//            // Add the tag to the ChoiceBox items
-//            choiceBox.getItems().add(tag.getKey() + ": " + tag.getValue().getValue());
-//        }
-//
-//        // If there are any tags, select the first one by default
-//        if (!choiceBox.getItems().isEmpty()) {
-//            choiceBox.getSelectionModel().select(0);
-//        }
-//    }
+    /**
+     * Get the person tags of the user.
+     * @return The person tags of the user.
+     */
+    public List<String> getPeopleTags() {
+        return new ArrayList<>(user.getPeopleTags());
+    }
 
     /**
      * Delete the tag specificied by the given String in the format "key-value" from the currently selected photo.

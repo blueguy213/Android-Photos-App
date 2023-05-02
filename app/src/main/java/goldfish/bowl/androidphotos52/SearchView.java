@@ -22,6 +22,9 @@ public class SearchView extends Fragment {
 
     private SearchViewBinding binding;
     private ThumbnailAdapter searchResultsAdapter;
+    private ArrayAdapter<String> locationAdapter;
+    private ArrayAdapter<String> peopleAdapter;
+
     private DataManager dmInstance;
 
     @Override
@@ -40,6 +43,8 @@ public class SearchView extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         searchResultsAdapter = new ThumbnailAdapter(requireContext(), dmInstance.searchResults);
+        locationAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, dmInstance.getLocationTags());
+        peopleAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, dmInstance.getPeopleTags());
         updateDisplay(getContext());
         binding.nextPhotoButton.setOnClickListener((view1 -> handleNextPhotoButtonClick(getContext())));
         binding.prevPhotoButton.setOnClickListener((view1 -> handlePrevPhotoButtonClick(getContext())));
